@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block page_title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'vendor/css/bootstrap.min.css' %}" type="text/css">
 </head>
 <body>
     <h1>{% block page_heading %}{% endblock %}</h1>
     {% block content %}{% endblock %}
+    <script src="{% static 'vendor/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
