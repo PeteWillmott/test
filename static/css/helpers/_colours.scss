@@ -1,15 +1,39 @@
-/* HSL
-$color1: hsla(69%, 35%, 29%, 1);
-$color2: hsla(49%, 24%, 40%, 1);
-$color3: hsla(59%, 21%, 55%, 1);
-$color4: hsla(63%, 25%, 30%, 1);
-$color5: hsla(51%, 29%, 77%, 1);
+/*
+$color1: hsla(198%, 21%, 39%, 1);
+$color2: hsla(197%, 33%, 81%, 1);
+$color3: hsla(196%, 36%, 90%, 1);
+$color4: hsla(216%, 38%, 47%, 1);
+$color5: hsla(201%, 72%, 31%, 1);
+
+$color1: rgba(79, 109, 122, 1);
+$color2: rgba(192, 214, 223, 1);
+$color3: rgba(219, 233, 238, 1);
+$color4: rgba(74, 111, 165, 1);
+$color5: rgba(22, 96, 136, 1);
 */
 
-/* RGB 
-$color1: rgba(92, 100, 48, 1);
-$color2: rgba(128, 119, 78, 1);
-$color3: rgba(164, 163, 115, 1);
-$color4: rgba(95, 97, 58, 1);
-$color5: rgba(213, 208, 178, 1);
-*/
+$facebook: #3b5998;
+$twitter: #1da1f2;
+
+$nav-bg: rgb(219, 233, 238);
+$mid-blue: rgb(74, 111, 165);
+
+.bg-light {
+    background-color:$nav-bg !important;
+}
+
+footer {
+    background-color: $nav-bg;
+}
+
+.time-select {
+    background-color: $mid-blue;
+}
+
+.facebook {
+    color: $facebook;
+}
+
+.twitter {
+    color: $twitter;
+}

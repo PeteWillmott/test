@@ -23,9 +23,56 @@
     <script defer src="{% static 'vendor/js/fontawesome-all.min.js' %}"></script> 
 </head>
 <body>
-    <nav>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">Grays Auction House</a>
+
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+        </form>
+
+        <a href="">Login</a>
+              
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Auctions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Buy Now</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">How it Works</a>
+                </li>
+            </ul>
+        </div>
     </nav>
+
+    <section id="time-categories">
+        <div class="row">
+            <div class="col  time-select">
+                <p>Viking</p>
+            </div>
+            <div class="col  time-select">
+                <p>17th Century</p>
+            </div>
+            <div class="col  time-select">
+                <p>18th Century</p>
+            </div>
+            <div class="col  time-select">
+                <p>Victorian</p>
+            </div>
+        </div>
+    </section>
 
     <main>
             <h1>{% block page_heading %}{% endblock %}</h1>
@@ -37,10 +84,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <p class="text-center"><span><i class="fab fa-facebook-square"></i></span></p>
+                    <p class="text-center"><a href="" target="_blank"><span><i class="fab  fa-facebook-square  facebook"></i></span></a></p>
                 </div>
                 <div class="col">
-                    <p><span class="text-center"><i class="fab fa-instagram"></i></span></p>
+                    <p class="text-center"><a href="" target="_blank"><span><i class="fab  fa-twitter  twitter"></i></span></a></p>
                 </div>
             </div>
         </div>
@@ -67,6 +114,16 @@
                 <a href="#">Bidding in an Auction</a>
                 <a href="#">Shipping</a><br>
                 <a href="#">Admin Login</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p><small><a href="#">Privacy Policy</a></small></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="text-center"><small><span><i class="far fa-copyright"></i></span> Copyright Gray and Sons 2019</small></p>
             </div>
         </div>
     </footer>
