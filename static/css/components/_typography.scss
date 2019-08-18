@@ -1,3 +1,5 @@
+/* ----- TITLES, HEADINGS AND TEXT ---------------------------- */
+
 @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Raleway&display=swap');
 
 %title-font {
@@ -101,4 +103,8 @@ h4 {
         @include large-desktop {
             font-size: 2vw;
         }
+}
+
+.title {
+    @extend %title-font;
 }

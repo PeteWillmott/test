@@ -1,3 +1,4 @@
+/* ----- COLOURS ----------------------- */
 /*
 $color1: hsla(198%, 21%, 39%, 1);
 $color2: hsla(197%, 33%, 81%, 1);
@@ -32,7 +33,8 @@ footer {
   color: #1da1f2;
 }
 
-h1, h2 {
+/* ----- TITLES, HEADINGS AND TEXT ---------------------------- */
+h1, h2, .title {
   font-family: 'Cinzel Decorative', cursive;
 }
 
@@ -199,5 +201,24 @@ h4 {
   h4 {
     font-size: 2vw;
   }
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ----- SPACING AND ALIGNMENT --------------- */
+.inline {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.left-13 {
+  padding-left: 13px;
 }
 /*# sourceMappingURL=main.css.map */
