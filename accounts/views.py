@@ -11,15 +11,21 @@ def index(request):
 
 def login(request):
     """Log in user."""
-
     login_form = UserLoginForm()
 
     return render(request, 'login.html', {"login_form": login_form})
 
 
+def logout(request):
+    """Logout user."""
+    auth.logout(request)
+    messages.success(request, "You have successfully been logged out")
+
+    return redirect(reverse('index'))
+
+
 def register(request):
     """Register a new user."""
-
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 
