@@ -43,13 +43,16 @@
                 </form>
             </div>
             <div class="col-2">
-                <a href="" class="navbar-text">Login</a>
+                <a href="{% url 'login' %}" class="navbar-text">Login</a>
             </div>
         </div>
 
         <div class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="main-nav">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Auctions</a>
                     </li>
@@ -70,16 +73,16 @@
     <section id="time-categories">
         <div class="row">
             <div class="col  time-select">
-                <p>Viking</p>
+                <p class="text-center">Viking</p>
             </div>
             <div class="col  time-select">
-                <p>17th Century</p>
+                <p class="text-center">17th Century</p>
             </div>
             <div class="col  time-select">
-                <p>18th Century</p>
+                <p class="text-center">18th Century</p>
             </div>
             <div class="col  time-select">
-                <p>Victorian</p>
+                <p class="text-center">Victorian</p>
             </div>
         </div>
     </section>
