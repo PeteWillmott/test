@@ -20,57 +20,73 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <script defer src="{% static 'vendor/js/fontawesome-all.min.js' %}"></script> 
+    <script defer src="{% static 'vendor/js/fontawesome-all.min.js' %}"></script>
+     <!--style>
+         * {
+            background: #000 !important;
+            color: #0f0 !important;
+            outline: solid #f00 1px !important;
+            }
+     </style>-->
 </head>
 <body>
-    
-    <nav class="container-fluid  navbar-light  bg-light">
-        <div class="row">
-            <div class="col-2">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <div class="navbar-light  bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <a class="navbar-brand  title" href="{% url 'index' %}">Grays</a>
+                    </div>
+                    <div class="col-2">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}" class="navbar-text">Logout</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="navbar-text">Login</a>
+                        {% endif %}
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col">
+                    <form class="form-inline  my-2  my-lg-0">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" style="width: 60%;">
+                    </form>
+                </div>
             </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="row">
+                <div class="col-12">
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Auctions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Buy Now</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">How it Works</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
 
-            <div class="col">
-                <p class="title"><a class="navbar-brand  title" href="#">Grays Auction House</a></p>
-            </div>
-            
-            <div class="col">
-                <form class="form-inline  my-2  my-lg-0">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                </form>
-            </div>
-            <div class="col-2">
-                <a href="{% url 'login' %}" class="navbar-text">Login</a>
-            </div>
-        </div>
-
-        <div class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="main-nav">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Auctions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Buy Now</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">How it Works</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <section id="time-categories">
+    <section id="time-categories container-fluid">
         <div class="row">
             <div class="col  time-select">
                 <p class="text-center">Viking</p>
