@@ -5,17 +5,30 @@
 <div>Newest product image</div>
 <div>sub catagories</div>
 <div>
-    {% for items in catalogue %}
+    {% for item in catalogue %}
     <div>
         <div class="row">
-            <div class="col-6"><img>image picture</div>
+            <div class="col-6">
+                <img src="{{ MEDIA_URL }}{{ item.image }}">
+                <p>image picture<br>
+                    link to details page
+                </p>
+            </div>
+            
             <div class="col-6">bids overview<br>
+                {{ item.name | title }}<br>
+                &#163;{{ item.price }}<br>
                 item name, number of bids, current bid, make a bid<br>
                 if allowed buy immediately button with new price
             </div>
         </div>
-        
-
+        <div class="row">
+            <div class="col">
+                <p>{{ item.description }}<br>
+                        truncate to 50 or 100 characters
+                </p>
+            </div>
+        </div>
     </div>
     {% endfor %}
 </div>
