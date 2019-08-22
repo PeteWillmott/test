@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from .views import index, login, logout, register
+from catalogue.models import Catalogue
 
 urlpatterns = [
     url(r'^$', index, name="index"),
