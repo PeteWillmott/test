@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}catalogue display{% endblock %}
+{% block content %}
+<div>Newest product image</div>
+<div>sub catagories</div>
+<div>
+    {% for items in catalogue %}
+    <div>
+        <div class="row">
+            <div class="col-6"><img>image picture</div>
+            <div class="col-6">bids overview<br>
+                item name, number of bids, current bid, make a bid<br>
+                if allowed buy immediately button with new price
+            </div>
+        </div>
+        
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
