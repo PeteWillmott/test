@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Catalogue(models.Model):
@@ -10,5 +11,9 @@ class Catalogue(models.Model):
 
     def __str__(self):
         return self.name
+
+
+    def get_absolute_url(self):
+        return reverse("catalogue:view_one", args=[str(self.id)])
 
 

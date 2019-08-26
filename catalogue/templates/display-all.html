@@ -9,10 +9,10 @@
     <div>
         <div class="row">
             <div class="col-6">
-                <img src="{{ MEDIA_URL }}{{ item.image }}">
-                <p>image picture<br>
-                    link to details page
-                </p>
+                <a href=""><!-- link to larger picture -->
+                <div class="lead-img" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')">
+                </a>
+                <p><a href="">Details</a></p>
             </div>
             
             <div class="col-6">bids overview<br>

@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views import static
 from accounts.urls import index
-from catalogue.views import view_all
+from catalogue import urls as urls_catalogue
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
-    url(r'^catalogue/all$', view_all, name="view_all"),
+    url(r'^catalogue/$', include(urls_catalogue)),
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
