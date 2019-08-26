@@ -9,12 +9,10 @@
     <div>
         <div class="row">
             <div class="col-6">
-                <a href=""><!-- link to larger picture -->
                 <div class="lead-img" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')">
-                </a>
-                <p><a href="">Details</a></p>
+                <p><a href="{{ item.get_absolute_url }}">Details</a></p>
             </div>
-            
+
             <div class="col-6">bids overview<br>
                 {{ item.name | title }}<br>
                 &#163;{{ item.price }}<br>

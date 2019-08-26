@@ -23,6 +23,6 @@ from .settings import MEDIA_ROOT
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
-    url(r'^catalogue/$', include(urls_catalogue)),
+    url(r'^catalogue/', include(urls_catalogue)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]

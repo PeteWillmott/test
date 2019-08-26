@@ -9,5 +9,5 @@ def view_all(request):
 
 
 def view_one(request, id):
-    display = Catalogue.objects.get(pk=id)
+    display = Catalogue.objects.get(id=id)
     return render(request, 'display-one.html', {"display": display})
