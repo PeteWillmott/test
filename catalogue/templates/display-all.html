@@ -2,22 +2,23 @@
 {% block page_title %}Gray and Sons{% endblock %}
 {% block page_heading %}catalogue display{% endblock %}
 {% block content %}
-<div>Newest product image</div>
-<div>sub catagories</div>
+<h2>Newest product image</h2>
+<h3>sub catagories</h3>
 <div>
     {% for item in catalogue %}
     <div>
         <div class="row">
             <div class="col-6">
-                <div class="lead-img" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')">
+                <div class="lead-img" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')"></div>
                 <p><a href="{{ item.get_absolute_url }}">Details</a></p>
             </div>
 
             <div class="col-6">bids overview<br>
                 {{ item.name | title }}<br>
                 &#163;{{ item.price }}<br>
-                item name, number of bids, current bid, make a bid<br>
-                if allowed buy immediately button with new price
+                
+                <span class="small">number of bids, current bid, make a bid<br>
+                if allowed buy immediately button with new price</span>
             </div>
         </div>
         <div class="row">
