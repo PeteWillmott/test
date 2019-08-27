@@ -3,9 +3,15 @@
 {% block page_heading %}catalogue display{% endblock %}
 {% block content %}
 
-<p>name</p>
-<p>large picture</p>
-<p>Full description</p>
-<p>price & bid/purchase</p>
+<p>{{ display.name | title }}</p>
+<div class="large-bg-img" style="background-image: url('{{ MEDIA_URL }}{{ display.image }}')"></div>
+<p>{{ display.description }}</p>
+<p>{{ display.price }} <br>bid/purchase</p>
+
+
+
+
+
+
 
 {% endblock %}
