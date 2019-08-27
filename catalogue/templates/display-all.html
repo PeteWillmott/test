@@ -2,7 +2,11 @@
 {% block page_title %}Gray and Sons{% endblock %}
 {% block page_heading %}catalogue display{% endblock %}
 {% block content %}
-<h2>Newest product image</h2>
+<div class="row">
+    <div class="col">
+        <img class="head-img" src="{{ MEDIA_URL }}{{ newest.image }}">
+    </div>
+</div>
 <h3>sub catagories</h3>
 <div>
     {% for item in catalogue %}

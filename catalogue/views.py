@@ -5,7 +5,8 @@ from .models import Catalogue
 
 def view_all(request):
     catalogue = Catalogue.objects.all()
-    return render(request, 'display-all.html', {"catalogue": catalogue})
+    newest = Catalogue.objects.last()
+    return render(request, 'display-all.html', {"catalogue": catalogue, "newest": newest})
 
 
 def view_one(request, id):
