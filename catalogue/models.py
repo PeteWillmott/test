@@ -14,6 +14,6 @@ class Catalogue(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse("catalogue.view_one", args=[str(self.id)])
+        return reverse("catalogue:view_one", args=[str(self.id)])
 
 
