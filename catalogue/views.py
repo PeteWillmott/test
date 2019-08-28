@@ -5,8 +5,16 @@ from .forms import CatalogueForm
 # Create your views here.
 
 def item_create(request):
-    add_item_form = CatalogueForm()
-    return render(request, 'item-create.html', {"form": add_item_form})
+    form = CatalogueForm()
+    return render(request, 'item-create.html', {"form": form})
+
+
+def item_update(request, id):
+    update = get_object_or_404(Catalogue, id=id)
+    form = CatalogueForm(request.POST, instance=update)
+    return render(request, 'item-update.html', {"form": form})
+    # update code
+    # return render(request, 'display-all.html', {"catalogue": catalogue, "newest": newest})
 
 
 def view_all(request):
