@@ -8,5 +8,7 @@ class CatalogueForm(forms.ModelForm):
             'name',
             'description',
             'price',
+            'culture',
+            'era',
             'image'
         ]

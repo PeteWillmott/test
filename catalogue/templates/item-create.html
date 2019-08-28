@@ -3,9 +3,13 @@
 
 {% block content %}
 
-<form method="POST">
-    {{ form | crispy }}
-    <input type="submit" value="Add item">
-</form>
+<div class="row">
+    <div class="col  offset-2  offset-md-4">
+        <form method="POST">
+            {{ form | crispy }}
+            <input type="submit" value="Add item">
+        </form>
+    </div>
+</div> 
 
 {% endblock %}
