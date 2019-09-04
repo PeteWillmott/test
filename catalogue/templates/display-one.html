@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}catalogue display{% endblock %}
+{% block content %}
+
+<p>{{ display.name | title }}</p>
+<div class="large-bg-img" style="background-image: url('{{ MEDIA_URL }}{{ display.image }}')"></div>
+<p>{{ display.description }}</p>
+<p>{{ display.price }} <br>bid/purchase</p>
+
+
+
+
+
+
+
+{% endblock %}

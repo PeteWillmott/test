@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from accounts.urls import index, login, logout, register
 from news.urls import news, reviews
+from django.views import static
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,5 +28,6 @@ urlpatterns = [
     url(r'^register$', register, name="register"),
     url(r'^news$', news, name="news"),
     url(r'^reviews$', reviews, name="reviews"),
-
+    url(r'^catalogue/', include('catalogue.urls')),
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]

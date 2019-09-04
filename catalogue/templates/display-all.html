@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}catalogue display{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <img class="head-img" src="{{ MEDIA_URL }}{{ newest.image }}">
+    </div>
+</div>
+<h3>sub catagories</h3>
+<div>
+    {% for item in catalogue %}
+    <div>
+        <div class="row">
+            <div class="col-6">
+                <div class="small-bg-img" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')"></div>
+                <p class="ml-3"><a href="{{ item.get_absolute_url }}">Details</a></p>
+            </div>
+
+            <div class="col-6">bids overview<br>
+                {{ item.name | title }}<br>
+                &#163;{{ item.price }}<br>
+                
+                <span class="small">number of bids, current bid, make a bid<br>
+                if allowed buy immediately button with new price</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col  ml-3">
+                <p>{{ item.description }}<br>
+                        truncate to 50 or 100 characters
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
