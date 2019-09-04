@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% for item in review %}
+    <h3>
+        {{ item.title }}
+        <small class="text-muted">{{ item.author }}</small>
+        <small class="text-muted">{{ item.pub_date | date:"D d M Y" }}</small>
+    </h3>
+    <p>{{ item.text }}</p>
+{% endfor %}
