@@ -6,7 +6,7 @@ def news(request):
     return render(request, 'lead_news_item.html', {"article": article})
 
 
-def review(request):
+def reviews(request):
     review = Review.objects.all()
     return render(request, 'reviews.html', {"review": review})
 

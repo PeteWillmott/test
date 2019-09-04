@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from accounts.urls import index, login, logout, register
+from news.urls import news, reviews
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,4 +24,7 @@ urlpatterns = [
     url(r'^login$', login, name="login"),
     url(r'^logout$', logout, name="logout"),
     url(r'^register$', register, name="register"),
+    url(r'^news$', news, name="news"),
+    url(r'^reviews$', reviews, name="reviews"),
+
 ]
