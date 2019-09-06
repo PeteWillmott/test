@@ -11,7 +11,6 @@ def index(request):
     return render(request, 'index.html')
 
 
-@login_required
 def login(request):
     """Log in user."""
     login_form = UserLoginForm()
@@ -19,6 +18,7 @@ def login(request):
     return render(request, 'login.html', {"login_form": login_form})
 
 
+@login_required
 def logout(request):
     """Logout user."""
     auth.logout(request)
