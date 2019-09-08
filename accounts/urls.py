@@ -1,10 +1,10 @@
-from django.conf.urls import url
+from django.urls import path
 from .views import index, login, logout, register
 from catalogue.models import Catalogue
 
 urlpatterns = [
-    url(r'^$', index, name="index"),
-    url(r'^login$', login, name="login"),
-    url(r'^logout$', logout, name="logout"),
-    url(r'^register$', register, name="register"),
+    path('', index, name="index"),
+    path('login', login, name="login"),
+    path('logout', logout, name="logout"),
+    path('register', register, name="register"),
 ]

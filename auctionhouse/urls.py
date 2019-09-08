@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views import static
+from django.conf import settings
+from django.conf.urls.static import static
 from accounts.urls import index, login, logout, register
 from news.urls import news, reviews
 from news.models import News, Review
+from catalogue import views as user_views
 from catalogue.models import Catalogue
 from .settings import MEDIA_ROOT
 
@@ -31,7 +33,7 @@ urlpatterns = [
     path('news', news, name="news"),
     path('reviews', reviews, name="reviews"),
     path('auctions/', include('catalogue.urls')),
-    # path('media/(?P<path>.*)', static.serve, {'document_root': MEDIA_ROOT}),
 ]
 
-
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
