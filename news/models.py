@@ -6,7 +6,7 @@ from catalogue.models import Catalogue
 # Create your models here.
 class News(models.Model):
     title = models.CharField(max_length=200)
-    text = models.TextField
+    text = models.TextField(null=True)
     image = models.ImageField(upload_to='images/')
     pub_date = models.DateTimeField(default=timezone.now,)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -18,7 +18,7 @@ class News(models.Model):
 class Review(models.Model):
     title = models.CharField(max_length=200)
     productID = models.ForeignKey(Catalogue, on_delete=models.CASCADE)
-    text = models.TextField
+    text = models.TextField(null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(default=timezone.now,)
 

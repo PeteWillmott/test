@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
-    'catalogue',
-    'news',
+    'accounts.apps.AuthConfig',
+    'catalogue.apps.CatalogueConfig',
+    'news.apps.NewsConfig',
     'crispy_forms',
 ]
 
