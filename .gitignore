@@ -6,3 +6,5 @@ venv/
 env/
 *.sqlite3
 img/
+media/
+notes.txt
