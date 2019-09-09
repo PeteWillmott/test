@@ -5,12 +5,6 @@ from .forms import UserLoginForm, UserRegistrationForm
 from catalogue.models import Catalogue
 
 # Create your views here.
-def index(request):
-    """Return the index.html file."""
-
-    return render(request, 'index.html')
-
-
 def login(request):
     """Log in user."""
     login_form = UserLoginForm()
@@ -30,11 +24,11 @@ def logout(request):
 def register(request):
     """Register a new user."""
     if request.user.is_authenticated:
+
         return redirect(reverse('index'))
 
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
-
         if registration_form.is_valid():
             registration_form.save()
 
@@ -42,7 +36,10 @@ def register(request):
                                         password=request.POST['password1'])
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered")
+                title = registration_form.cleaned_data.get('title')
+                first_name = registration_form.cleaned_data.get('first_name')
+                last_name = registration_form.cleaned_data.get('last_name')
+                messages.success(request, f'Account created for {title} {first_name} {last_name}.')
                 return render(request, 'index.html')
             else:
                 messages.error(request, "Unable to register your account at this time")

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'catalogue.apps.CatalogueConfig',
     'news.apps.NewsConfig',
+    'home.apps.HomeConfig',
     'crispy_forms',
 ]
 
