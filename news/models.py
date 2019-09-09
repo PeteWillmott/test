@@ -7,7 +7,7 @@ from catalogue.models import Catalogue
 class News(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField(null=True)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', blank=True)
     pub_date = models.DateTimeField(default=timezone.now,)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 

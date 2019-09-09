@@ -14,7 +14,15 @@
     {% block featured %}
         <!-- include 'featured-items.html' -->
     {% endblock %}
-    {% block blog %}
-        <!-- include 'latest-blog.html' -->
-    {% endblock %}
+<div class="row">
+    {% for blog in top_two_blogs %}
+        <div class="col">
+            <h3>{{ blog.title }} {{ blog.pub_date }}</h3>
+            <p>{{ blog.text }}</p>
+            {% if blog.image %}
+                <img class="head-img" src="{{ blog.image.url }}" alt="{{ blog.title }} picture.">
+            {% endif%}
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

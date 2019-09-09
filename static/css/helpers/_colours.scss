@@ -19,6 +19,11 @@ $twitter: #1da1f2;
 
 $nav-bg: rgb(219, 233, 238);
 $mid-blue: rgb(74, 111, 165);
+$bg-white: rgb(249,249,249);
+
+body {
+    background-color: $bg-white;
+}
 
 .bg-light {
     background-color:$nav-bg !important;
@@ -38,4 +43,13 @@ footer {
 
 .twitter {
     color: $twitter;
+}
+
+.contrast-bg {
+    background-color: $bg-white;
+    border-style: solid;
+    border-color: $bg-white;
+    border-width: 1px;
+    padding: 5px;
+    border-radius: 15px;
 }
