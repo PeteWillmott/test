@@ -13,4 +13,14 @@ def view_one(request, id):
     return render(request, 'display-one.html', {"display": display})
 
 
+def viking_era(request):
+    viking = Catalogue.objects.filter(era='viking')
+    newest = Catalogue.objects.filter(era='viking').last()
+    context = {
+        "viking": viking,
+        "newest": newest
+        }
+    return render(request, 'viking-era.html', context)
+
+
 
