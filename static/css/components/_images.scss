@@ -16,9 +16,48 @@
     margin: 0 auto;
 }
 
-.head-img {
+.blog-img {
     width: 100px;
     height: 100px;
     display:block;
     margin:auto;
+}
+
+.header-bg-img {
+    background-color: $bg-white;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    height: 25vh;
+    @include large-phone {
+        height: 25vh;
+        }
+        @include tablet {
+            height: 30vh;
+        }
+        @include desktop {
+            height: 75vh;
+        }
+        @include large-desktop {
+            height: 75vh;
+        }
+}
+
+.head-img {
+    display:block;
+    margin:auto;
+    height: 15vh;
+    @include large-phone {
+        height: 15vh;
+        }
+        @include tablet {
+            height: 20vh;
+        }
+        @include desktop {
+            height: 35vh;
+        }
+        @include large-desktop {
+            height: 35vh;
+        }
 }
