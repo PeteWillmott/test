@@ -17,10 +17,10 @@
 <div class="row">
     {% for blog in top_two_blogs %}
         <div class="col">
-            <h3>{{ blog.title }} {{ blog.pub_date }}</h3>
+            <h3 class="px-1">{{ blog.title }} <small class="text-muted">{{ blog.pub_date | date:"D d M Y" }}</small></h3>
             <p>{{ blog.text }}</p>
             {% if blog.image %}
-                <img class="head-img" src="{{ blog.image.url }}" alt="{{ blog.title }} picture.">
+                <img class="blog-img  py-2" src="{{ blog.image.url }}" alt="{{ blog.title }} picture.">
             {% endif%}
         </div>
     {% endfor %}

@@ -11,3 +11,11 @@ def index(request):
         "top_two_blogs": top_two_blogs
     }
     return render(request, 'index.html', context)
+
+
+def contact(request):
+    return render(request, 'contact.html')
+
+
+def about(request):
+    return render(request, 'about.html')

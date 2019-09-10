@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from home.urls import index
+from home.urls import index, about, contact
 from accounts.urls import login, logout, register
 from news.urls import news, reviews
 from news.models import News, Review
@@ -28,6 +28,8 @@ from .settings import MEDIA_ROOT
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
+    path('contact', contact, name="contact"),
+    path('about', about, name="about"),
     path('login', login, name="login"),
     path('logout', logout, name="logout"),
     path('register', register, name="register"),
