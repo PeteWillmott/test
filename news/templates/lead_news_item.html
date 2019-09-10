@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-
-<h3>SANITY CHECK!
-    {{ article.title }}
-    <small class="text-muted">{{ article.author }}</small>
-    <small class="text-muted">{{ article.pub_date | date:"D d M Y" }}</small>
-</h3>
-<p>{{ article.text }}</p>
-<img src="{{ media_url }}{{ article.image }}">

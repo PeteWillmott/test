@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .models import News, Review
 
 def news(request):
-    article = News.objects.last()
-    return render(request, 'lead_news_item.html', {"article": article})
+    articles = News.objects.all()
+    return render(request, 'news.html', {"articles": articles})
 
 
 def reviews(request):

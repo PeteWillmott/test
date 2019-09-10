@@ -17,10 +17,27 @@
 }
 
 .blog-img {
-    width: 100px;
-    height: 100px;
     display:block;
     margin:auto;
+    height: 15vh;
+    @include large-phone {
+        height: 15vh;
+        }
+        @include tablet {
+            height: 20vh;
+        }
+        @include desktop {
+            height: 35vh;
+        }
+        @include large-desktop {
+            height: 35vh;
+        }
+}
+
+.blog-article-img {
+    display:block;
+    margin:auto;
+    max-height: 200px;
 }
 
 .header-bg-img {
