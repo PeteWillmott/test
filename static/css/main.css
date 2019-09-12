@@ -13,6 +13,10 @@ $color4: rgba(74, 111, 165, 1);
 $color5: rgba(22, 96, 136, 1);
 */
 @import url("https://fonts.googleapis.com/css?family=Cinzel+Decorative|Raleway&display=swap");
+body {
+  background-color: #f9f9f9;
+}
+
 .bg-light {
   background-color: #dbe9ee !important;
 }
@@ -31,6 +35,15 @@ footer {
 
 .twitter {
   color: #1da1f2;
+}
+
+.contrast-bg {
+  background-color: #f9f9f9;
+  border-style: solid;
+  border-color: #f9f9f9;
+  border-width: 1px;
+  padding: 5px;
+  border-radius: 15px;
 }
 
 /* ----- TITLES, HEADINGS AND TEXT ---------------------------- */
@@ -220,5 +233,114 @@ a:hover {
 
 .left-13 {
   padding-left: 13px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.small-bg-img {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.large-bg-img {
+  background-color: #f9f9f9;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.blog-img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: auto;
+}
+
+.header-bg-img {
+  background-color: #f9f9f9;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  height: 25vh;
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .header-bg-img {
+    height: 25vh;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .header-bg-img {
+    height: 30vh;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .header-bg-img {
+    height: 75vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header-bg-img {
+    height: 75vh;
+  }
+}
+
+.head-img {
+  display: block;
+  margin: auto;
+  height: 15vh;
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .head-img {
+    height: 15vh;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .head-img {
+    height: 20vh;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .head-img {
+    height: 35vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  .head-img {
+    height: 35vh;
+  }
+}
+
+.about-bg {
+  background-image: url("/static/img/about.jpg");
+  background-color: #f9f9f9;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.contact-bg {
+  background-image: url("/static/img/contact.png");
+  background-color: #f9f9f9;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 /*# sourceMappingURL=main.css.map */
