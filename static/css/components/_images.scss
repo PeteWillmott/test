@@ -1,17 +1,19 @@
-.small-bg-img {
+.bg {
+    background-color: $bg-white;
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
+}
+
+.small-bg-img {
+    @extend .bg;
     width: 150px;
     height: 150px;
     margin: 0 auto;
 }
 
 .large-bg-img {
-    background-color: $bg-white;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
+    @extend .bg;
     height: 400px;
     margin: 0 auto;
 }
@@ -41,10 +43,7 @@
 }
 
 .header-bg-img {
-    background-color: $bg-white;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
+    @extend bg;
     margin: 0 auto;
     height: 25vh;
     @include large-phone {
@@ -77,4 +76,14 @@
         @include large-desktop {
             height: 35vh;
         }
+}
+
+.about-bg {
+    background-image: url('/static/img/about.jpg');
+    @extend .bg;
+}
+
+.contact-bg {
+    background-image: url('/static/img/contact.png');
+    @extend .bg;
 }

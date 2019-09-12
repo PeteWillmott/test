@@ -259,6 +259,7 @@ a:hover {
 }
 
 .blog-img {
+<<<<<<< HEAD
   display: block;
   margin: auto;
   height: 15vh;
@@ -292,6 +293,12 @@ a:hover {
   display: block;
   margin: auto;
   max-height: 200px;
+=======
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: auto;
+>>>>>>> feature_index_integration
 }
 
 .header-bg-img {
@@ -356,4 +363,23 @@ a:hover {
     height: 35vh;
   }
 }
+<<<<<<< HEAD
+=======
+
+.about-bg {
+  background-image: url("/static/img/about.jpg");
+  background-color: #f9f9f9;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.contact-bg {
+  background-image: url("/static/img/contact.png");
+  background-color: #f9f9f9;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+>>>>>>> feature_index_integration
 /*# sourceMappingURL=main.css.map */
