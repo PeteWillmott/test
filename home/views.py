@@ -19,3 +19,16 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+
+def faq(request):
+    return render(request, 'faq.html')
+
+
+def how_to(request):
+    return render(request, 'how-to.html')
+
+
+def shipping(request):
+    return render(request, 'shipping.html')
+
