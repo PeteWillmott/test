@@ -141,10 +141,9 @@
         </p>
         <div class="collapse" id="resources">
             <div>
-                <a class="px-3" href="#">Help and FAQ's</a><br>
-                <a class="px-3" href="#">Bidding in an Auction</a>
-                <a class="px-3" href="#">Shipping</a><br>
-                <a class="px-3" href="#">Admin Login</a>
+                <a href="{% url 'home:faq' %}"">Help and FAQ's</a><br>
+                <a href="{% url 'home:how_to' %}">Bidding in an Auction</a><br>
+                <a href="{% url 'home:shipping' %}">Shipping</a><br>
             </div>
         </div>
         <div class="row">
