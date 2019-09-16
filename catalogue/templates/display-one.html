@@ -6,7 +6,15 @@
 <p>{{ display.name | title }}</p>
 <div class="large-bg-img" style="background-image: url('{{ MEDIA_URL }}{{ display.image }}')"></div>
 <p>{{ display.description }}</p>
-<p>{{ display.price }} <br>bid/purchase</p>
+<div class="row">
+    <div class="col">
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Bid">
+        </form>
+    </div>
+</div>
 
 
 

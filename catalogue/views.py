@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Catalogue
+from bid.models import Bid
 from .forms import CatalogueForm
+from bid.forms import BidForm
 
 def view_all(request):
     catalogue = Catalogue.objects.all()
@@ -8,9 +10,22 @@ def view_all(request):
     return render(request, 'display-all.html', {"catalogue": catalogue, "newest": newest})
 
 
-def view_one(request, id):
-    display = Catalogue.objects.get(id=id)
-    return render(request, 'display-one.html', {"display": display})
+def view_one(request, pk):
+    display = Catalogue.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = BidForm(request.POST)
+        if form.is_valid():
+            form.save()
+    
+    else:
+        form = BidForm()
+
+    context = {
+        "display": display,
+        "form": form
+    }
+    return render(request, 'display-one.html', context)
 
 
 def viking_era(request):
