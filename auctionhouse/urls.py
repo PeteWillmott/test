@@ -34,6 +34,7 @@ urlpatterns = [
     path('news', news, name="news"),
     path('reviews', reviews, name="reviews"),
     path('auctions/', include('catalogue.urls')),
+    path('payment/', include('payment.urls')),
 ]
 
 if settings.DEBUG:

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'catalogue.apps.CatalogueConfig',
     'home.apps.HomeConfig',
     'news.apps.NewsConfig',
+    'payment.apps.PaymentConfig',
     'crispy_forms',
 ]
 
