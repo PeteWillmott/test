@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Catalogue
-from bid.models import Bid
-from .forms import CatalogueForm
-from bid.forms import BidForm
+#from bid.models import Bid
+from .forms import CatalogueForm, BidForm
+#from bid.forms import BidForm
 
 def view_all(request):
     catalogue = Catalogue.objects.all()
@@ -16,15 +16,20 @@ def view_one(request, pk):
     if request.method == 'POST':
         form = BidForm(request.POST)
         if form.is_valid():
-            form.save()
-    
+            #product = form.cleaned_data['product']
+            bid = form.cleaned_data['bid']
+            c = Catalogue.objects.get(id=pk)
+            c.bid = bid
+            c.save()
+
     else:
-        form = BidForm()
+        form =BidForm()
 
     context = {
         "display": display,
         "form": form
     }
+
     return render(request, 'display-one.html', context)
 
 
