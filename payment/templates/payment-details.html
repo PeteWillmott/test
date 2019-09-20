@@ -5,7 +5,17 @@
 {% block page_heading %}Payment Details{% endblock %}
 {% block content %}
 
+<div class="row">
+    <div class="col  unselected"><a class="unselected-link" href="{% url 'payment:customer-details' %}"><p class="text-center">Customer Details</p></a></div>
+    <div class="col  unselected"><a class="unselected-link" href="{% url 'payment:shipping-details' %}"><p class="text-center">Delivery Address</p></a></div>
+    <div class="col  unselected"><a class="unselected-link" href="{% url 'payment:billing-details' %}"><p class="text-center">Billing Address</p></a></div>
+    <div class="col  selected"><a class="selected-link" href="{% url 'payment:payment-details' %}"><p class="text-center">Payment</p></a></div>
+</div>
+
 <p>STRIPE STUFF HERE</p>
+
+<a href="">Back</a>
+<a href="">Next</a>
 
 {% endblock %}
 

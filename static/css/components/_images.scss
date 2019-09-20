@@ -43,7 +43,7 @@
 }
 
 .header-bg-img {
-    @extend bg;
+    @extend .bg;
     margin: 0 auto;
     height: 25vh;
     @include large-phone {
