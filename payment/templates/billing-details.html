@@ -13,7 +13,7 @@
 
 <form action="POST">
     {% csrf_token %}
-    {{ bform | crispy }}
+    {{ billing_form | crispy }}
 </form>
 
 <p>Deliver to the billing address?</p>
@@ -21,7 +21,7 @@
 
 <form id="delivery-form" action="POST">
     {% csrf_token %}
-    {{ sform | crispy }}
+    {{ delivery_form | crispy }}
 </form>
 
 <a href="">Back</a>

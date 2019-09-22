@@ -1,16 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Customer, Billing_Address, Delivery_Address
-
-
-class CustomerForm(forms.ModelForm):
-    class Meta:
-        model = Customer
-        fields =[
-            'title',
-            'first_name',
-            'last_name'
-        ]
+from .models import Billing_Address, Delivery_Address
 
 
 class Billing_AddressForm(forms.ModelForm):
