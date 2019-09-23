@@ -5,7 +5,7 @@
 {% block content %}
 <form method="POST">
     {% csrf_token %} {{ login_form | crispy }}
-    <button type="submit" class="btn btn-default">Login</button>
+    <button type="submit" class="btn btn-primary">Login</button>
     <p><a href="#">Forgot your password?</a></p>
     <p>Don't have an account with us? <a href="{% url 'register' %}">Register now.</a></p>
 </form>
