@@ -1,10 +1,6 @@
-function hideShowDeliveryForm() {
+function toggleFormDisplay(id) {
 
-    var delivery = document.getElementsByid("delivery-form");
+    var form = document.getElementById(id);
     
-    if (delivery.style.display === "none") {
-        delivery.style.display = "block";
-    } else {
-      delivery.style.display = "none";
-    }
+    form.classList.toggle("d-none");
   }

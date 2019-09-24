@@ -11,12 +11,6 @@
 {% block content %}
 
 <div class="row">
-    <div class="col  unselected"><a class="unselected-link" href="{% url 'payment:customer-details' %}"><p class="text-center">Customer Details</p></a></div>
-    <div class="col  unselected"><a class="unselected-link" href="{% url 'payment:billing-details' %}"><p class="text-center">Billing Address</p></a></div>
-    <div class="col  selected"><a class="selected-link" href="{% url 'payment:payment-details' %}"><p class="text-center">Payment</p></a></div>
-</div>
-
-<div class="row">
     <div class="col">
         <form action="/charge" method="post" id="payment-form">
             <div>
@@ -36,7 +30,7 @@
     </div>
 </div>
 
-<a href="">Back</a>
+<a href="{% url 'payment:billing-details' %}">Back</a>
 
 <script>
 // Create a Stripe client.
