@@ -6,7 +6,7 @@
 {% block page_heading %}Shipping Details{% endblock %}
 {% block content %}
 
-<form method="POST" novalidate>
+<form method="POST"> <!-- novalidate -->
     {% csrf_token %}
 
     <div>
@@ -22,7 +22,8 @@
     <button type="button" class="btn btn-outline-primary  d-block  my-2" onclick="toggleFormDisplay('billing')">Add a different address for Billing.</button>
     
     <div id="billing" class="d-none">
-        {{ billing_form | crispy }}
+        {{ customer_form | crispy }}
+        {{ dbilling_form | crispy }}
     </div>
 
     <button type="submit" class="btn btn-primary  my-2">On to payment</button>

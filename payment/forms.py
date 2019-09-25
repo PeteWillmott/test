@@ -34,7 +34,7 @@ class Recipient_Form(forms.ModelForm):
             'recipient'
         ]
 
-    def clean_default(self):
+    def clean_recipient(self):
         recipient = self.cleaned_data.get('recipient')
         return recipient
 

@@ -72,9 +72,6 @@ class Delivery_Address(models.Model):
     def __str__(self):
         return self.delivery_name
 
-    #def get_absolute_url(self):
-        #return reverse("payment:<id>", args=[str(self.pk)])
-
 
 
 

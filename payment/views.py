@@ -19,16 +19,27 @@ from .models import Delivery_Address
 
 def billing_details(request):
     if request.method == "POST":
-        recipient_form = Recipient_Form(request.POST)
+        delivery_form = Delivery_AddressForm(request.POST, instance=request.user)
+        if delivery_form.is_valid:
+            delivery_form.save()
+            address = delivery_form
+        """billing_form = Billing_AddressForm(request.POST, instance=request.user)
+        customer_form = Customer_Form(request.POST, instance=request.user)
+        if billing_form.is_valid and customer_form.is_valid:
+            billing_form.save()
+            customer_form.save()"""
+        
+        """recipient_form = Recipient_Form(request.POST)
         if recipient_form.is_valid():
             recipient = recipient_form.cleaned_data.get('recipient')
-            address = Delivery_Address.objects.get(delivery_name=recipient)
+            address = Delivery_Address.objects.get(delivery_name=recipient)"""
+        # else clause setting address to '' and {% if address %} in payment???
 
         return render(request, 'payment-details.html', {"address": address})
 
     recipient_form = Recipient_Form(instance=request.user)
     customer_form = Customer_Form(instance=request.user)
-    billing_form = Delivery_AddressForm(instance=request.user)
+    billing_form = Billing_AddressForm(instance=request.user)
     delivery_form = Delivery_AddressForm(instance=request.user)
     context = {
         "recipient_form": recipient_form,
