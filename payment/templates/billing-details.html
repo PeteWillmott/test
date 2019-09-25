@@ -6,33 +6,26 @@
 {% block page_heading %}Shipping Details{% endblock %}
 {% block content %}
 
-<form action="POST">
+<form method="POST" novalidate>
     {% csrf_token %}
-    <div class="row">
-        {% for address in addresses %}
-            <div class="col-sm-6  col-md-3  border  border-dark  m-2">
-                <input type="radio" name="delivery_address" value="address.id"><br>
-                {{ address.delivery_name }}<br>
-                {{ address.street1 }}<br>
-                {{ address.street2 }}<br>
-                {{ address.town }}<br>
-            </div>
-        {% endfor %}
+
+    <div>
+        {{ recipient_form | crispy }}
     </div>
 
-    <button type="button" class="btn  btn-outline-primary  d-block  my-3" onclick="toggleFormDisplay('delivery')">Add different address for delivery.</button>
+    <button type="button" class="btn  btn-outline-primary  d-block  my-3" onclick="toggleFormDisplay('delivery')">Add a different recipient.</button>
 
     <div id="delivery" class="d-none">
         {{ delivery_form | crispy }}
     </div>
 
-    <button type="button" class="btn btn-outline-primary  d-block  my-2" onclick="toggleFormDisplay('billing')">Add different address for Billing.</button>
-    <button type="submit" class="btn btn-primary  my-2">On to payment</button><br>
-
+    <button type="button" class="btn btn-outline-primary  d-block  my-2" onclick="toggleFormDisplay('billing')">Add a different address for Billing.</button>
+    
     <div id="billing" class="d-none">
         {{ billing_form | crispy }}
-        <button type="submit" class="btn btn-primary  d-block  my-2">On to payment</button>
     </div>
+
+    <button type="submit" class="btn btn-primary  my-2">On to payment</button>
 
 </form>
 
