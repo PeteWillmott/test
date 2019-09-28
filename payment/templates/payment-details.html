@@ -9,13 +9,14 @@
 {% block page_title %}Gray and Sons{% endblock %}
 {% block page_heading %}Payment Details{% endblock %}
 {% block content %}
+
 <div class="border  border-primary  enclose">
 <div class="row">
     <div class="col"><h4 class="pt-2  ml-2">Delivery Address <small class="text-muted">Step 1 of 2</small></h4></div>
 </div>
   <div class="row">
       <div class="col  col-md-5  offset-md-1">
-          <p>{{ address.title | title }} {{ address.delivery_name | title }}<br>
+            <p>{{ address.title | title }} {{ address.delivery_name | title }}<br>
             {{ address.street1 | title}}<br>
             {% if address.street2 %}
                 {{ address.street2 | title}}<br>
@@ -25,18 +26,26 @@
             {{ address.postcode | title}}<br>
             {{ address.country | title}}<br>
           </p>
-      </div>
-      <div class="col  col-md-6">
-        <p>{{ billing.billing_name | title }}<br>
-          {{ billing.street1 | title}}<br>
-          {% if billing.street2 %}
-              {{ billing.street2 | title}}<br>
-          {% endif %}
-          {{ billing.town | title}}<br>
-          {{ billing.county | title}}<br>
-          {{ billing.postcode | title}}<br>
-          {{ billing.country | title}}<br>
-        </p>
+    </div>
+    <div class="col  col-md-6">
+        {% if billing %}
+            <p>
+                {{ billing.billing_name | title }}<br>
+                {{ billing.street1 | title}}<br>
+                {% if billing.street2 %}
+                    {{ billing.street2 | title}}<br>
+                {% endif %}
+                {{ billing.town | title}}<br>
+                {{ billing.county | title}}<br>
+                {{ billing.postcode | title}}<br>
+                {{ billing.country | title}}<br>
+                billing edit button here
+            </p>
+        {% else %}
+            <form method="POST">
+                <p>slap billing addy form here</p>
+            </form>
+        {% endif %}
     </div>
   </div>
 </div>

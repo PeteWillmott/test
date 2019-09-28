@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse 
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .forms import Billing_Address_Form, Delivery_Address_Form,  Recipient_Form
 from .models import Delivery_Address, Billing_Address
 
@@ -34,10 +34,14 @@ from .models import Delivery_Address, Billing_Address
 
 
 def payment(request):
+
     form_data = request.POST or None
     recipient_form = Recipient_Form(form_data, user=request.user)
     delivery_form = Delivery_Address_Form(form_data)
-    billing = Billing_Address.objects.get(user=request.user)
+    try:
+        billing = Billing_Address.objects.get(user=request.user)
+    except Billing_Address.DoesNotExist:
+        billing = None
     
     if request.method == "POST":
         if delivery_form.is_valid():
@@ -58,6 +62,10 @@ def payment(request):
                 {"address": address, "billing": billing},
             )
 
-    context = {"recipient_form": recipient_form, "delivery_form": delivery_form}
+    recipient_check = Delivery_Address.objects.filter(user=request.user)
+    if recipient_check:
+        context = {"recipient_form": recipient_form, "delivery_form": delivery_form}
+    else:
+        context = {"delivery_form": delivery_form}
     return render(request, "delivery-address.html", context)
 
