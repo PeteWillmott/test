@@ -1,54 +1,33 @@
-from django.shortcuts import render
-from .forms import Billing_AddressForm, Delivery_AddressForm, Customer_Form, Recipient_Form
-from .models import Delivery_Address
+from django.shortcuts import render, redirect, reverse 
+from .forms import Billing_Address_Form, Delivery_Address_Form, Customer_Form, Recipient_Form
+from .models import Delivery_Address, Billing_Address, Customer
 
-"""def customer_details(request):
+
+def payment(request):
     if request.method == "POST":
-        form = Customer_Form(request.POST, instance=request.user)
-        if form.is_valid():
-            customer = form.cleaned_data['customer']
-    else:
-        form = Customer_Form(instance=request.user)
 
-    return render(request, 'customer-details.html', {"form": form})"""
+        billing = Billing_Address.objects.get(user=request.user)
 
-"""def shipping_details(request):
-    customer_form = Customer_Form(instance=request.user)
-    delivery_form = Delivery_AddressForm(instance=request.user)
-    return render(request, 'shipping-details.html', {"customer_form": customer_form, "delivery_form": delivery_form})"""
-
-def billing_details(request):
-    if request.method == "POST":
-        delivery_form = Delivery_AddressForm(request.POST, instance=request.user)
-        if delivery_form.is_valid:
+        delivery_form = Delivery_Address_Form(request.POST, instance=request.user)
+        if delivery_form.is_valid():
+            delivery_form.save(commit=False)
+            delivery_form.user = request.user
             delivery_form.save()
-            address = delivery_form
-        """billing_form = Billing_AddressForm(request.POST, instance=request.user)
-        customer_form = Customer_Form(request.POST, instance=request.user)
-        if billing_form.is_valid and customer_form.is_valid:
-            billing_form.save()
-            customer_form.save()"""
-        
-        """recipient_form = Recipient_Form(request.POST)
-        if recipient_form.is_valid():
-            recipient = recipient_form.cleaned_data.get('recipient')
-            address = Delivery_Address.objects.get(delivery_name=recipient)"""
-        # else clause setting address to '' and {% if address %} in payment???
+            recipient = delivery_form.cleaned_data['delivery_name']
+            address = Delivery_Address.objects.get(delivery_name=recipient)
+            return render(request, 'payment-details.html', {"address": address, "billing": billing})
 
-        return render(request, 'payment-details.html', {"address": address})
+        else:
+            recipient_form = Recipient_Form(request.POST)
+            if recipient_form.is_valid():
+                recipient = recipient_form.cleaned_data.get('recipient')
+                address = Delivery_Address.objects.get(delivery_name=recipient)
+                return render(request, 'payment-details.html', {"address": address, "billing": billing})
 
     recipient_form = Recipient_Form(instance=request.user)
-    customer_form = Customer_Form(instance=request.user)
-    billing_form = Billing_AddressForm(instance=request.user)
-    delivery_form = Delivery_AddressForm(instance=request.user)
+    delivery_form = Delivery_Address_Form(instance=request.user)
     context = {
         "recipient_form": recipient_form,
-        "customer_form": customer_form,
-        "billing_form": billing_form,
         "delivery_form": delivery_form
     }
-    return render(request, 'billing-details.html', context)
-
-
-def payment_details(request):
-    return render(request, 'payment-details.html')
+    return render(request, 'delivery-address.html', context)

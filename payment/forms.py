@@ -1,10 +1,10 @@
 from django import forms
-from django.utils.translation import gettext_lazy as _
+from django.forms import ModelForm
 from django.contrib.auth.models import User
 from .models import Billing_Address, Customer, Delivery_Address
 
 
-class Billing_AddressForm(forms.ModelForm):
+class Billing_Address_Form(ModelForm):
     class Meta:
         model = Billing_Address
         fields = [
@@ -39,7 +39,7 @@ class Recipient_Form(forms.ModelForm):
         return recipient
 
 
-class Delivery_AddressForm(forms.ModelForm):
+class Delivery_Address_Form(ModelForm):
     class Meta:
         model = Delivery_Address
         labels = {'delivery_name': 'Recipient\'s name'}
