@@ -3,7 +3,7 @@ from .forms import Billing_Address_Form, Delivery_Address_Form, Customer_Form, R
 from .models import Delivery_Address, Billing_Address, Customer
 
 
-def payment(request):
+"""def payment(request):
     if request.method == "POST":
 
         billing = Billing_Address.objects.get(user=request.user)
@@ -30,4 +30,33 @@ def payment(request):
         "recipient_form": recipient_form,
         "delivery_form": delivery_form
     }
-    return render(request, 'delivery-address.html', context)
+    return render(request, 'delivery-address.html', context)"""
+
+
+def payment(request):
+    form_data = request.POST or None
+    recipient_form = Recipient_Form(form_data, user=request.user)
+    delivery_form = Delivery_Address_Form(form_data)
+    
+    if request.method == "POST":
+        if delivery_form.is_valid():
+            address_used = delivery_form.save(commit=False)
+            address_used.user = request.user
+            address_used.save()
+            return render(
+                request,
+                "payment-details.html",
+                {"address": address_used, "billing": None},
+            )
+
+        elif recipient_form.is_valid():
+            address = recipient_form.cleaned_data.get("recipient")
+            return render(
+                request,
+                "payment-details.html",
+                {"address": address, "billing": None},
+            )
+
+    context = {"recipient_form": recipient_form, "delivery_form": delivery_form}
+    return render(request, "delivery-address.html", context)
+
