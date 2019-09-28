@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse 
-from .forms import Billing_Address_Form, Delivery_Address_Form, Customer_Form, Recipient_Form
-from .models import Delivery_Address, Billing_Address, Customer
+from .forms import Billing_Address_Form, Delivery_Address_Form,  Recipient_Form
+from .models import Delivery_Address, Billing_Address
 
 
 """def payment(request):
@@ -37,6 +37,7 @@ def payment(request):
     form_data = request.POST or None
     recipient_form = Recipient_Form(form_data, user=request.user)
     delivery_form = Delivery_Address_Form(form_data)
+    billing = Billing_Address.objects.get(user=request.user)
     
     if request.method == "POST":
         if delivery_form.is_valid():
@@ -46,7 +47,7 @@ def payment(request):
             return render(
                 request,
                 "payment-details.html",
-                {"address": address_used, "billing": None},
+                {"address": address_used, "billing": billing},
             )
 
         elif recipient_form.is_valid():
@@ -54,7 +55,7 @@ def payment(request):
             return render(
                 request,
                 "payment-details.html",
-                {"address": address, "billing": None},
+                {"address": address, "billing": billing},
             )
 
     context = {"recipient_form": recipient_form, "delivery_form": delivery_form}

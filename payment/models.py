@@ -17,29 +17,6 @@ class Billing_Address(models.Model):
         return self.billing_name
 
 
-class Customer(models.Model):
-    PROF = 'Prof'
-    DR = 'Dr'
-    LADY = 'Lady'
-    MRS = 'Mrs'
-    MS = 'Ms'
-    MISS = 'Miss'
-    MR = 'Mr'
-    SIR = 'Sir'
-    TITLE_CHOICES = [
-        (PROF, 'Prof'),
-        (DR, 'Dr'),
-        (LADY, 'Lady'),
-        (MRS, 'Mrs'),
-        (MS, 'Ms'),
-        (MISS, 'Miss'),
-        (MR, 'Mr'),
-        (SIR, 'Sir'),
-    ]
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=4, choices=TITLE_CHOICES, default=MRS)
-
-
 class Delivery_Address(models.Model):
     PROF = 'Prof'
     DR = 'Dr'

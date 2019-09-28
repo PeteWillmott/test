@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.models import User
-from .models import Billing_Address, Customer, Delivery_Address
+from .models import Billing_Address, Delivery_Address
 
 
 class Billing_Address_Form(ModelForm):
@@ -18,11 +18,19 @@ class Billing_Address_Form(ModelForm):
         ]
 
 
-class Customer_Form(forms.ModelForm):
+class Delivery_Address_Form(ModelForm):
     class Meta:
-        model = Customer
+        model = Delivery_Address
+        labels = {'delivery_name': 'Recipient\'s name'}
         fields = [
-            'title'
+            'title',
+            'delivery_name',
+            'street1',
+            'street2',
+            'town',
+            'county',
+            'postcode',
+            'country'
         ]
 
 

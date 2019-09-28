@@ -1,7 +1,7 @@
 from django.urls import path, include
 from . import views
-from .models import Customer, Billing_Address, Delivery_Address
-from .forms import Customer_Form, Billing_Address_Form, Delivery_Address_Form
+from .models import Billing_Address, Delivery_Address
+from .forms import Billing_Address_Form, Delivery_Address_Form
 
 app_name = 'payment'
 urlpatterns = [
