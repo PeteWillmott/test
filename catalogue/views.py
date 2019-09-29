@@ -12,7 +12,6 @@ def view_all(request):
 def view_one(request, pk):
     display = Catalogue.objects.get(id=pk)
 
-
     if request.method == 'POST':
         form = BidForm(request.POST)
         if form.is_valid():
@@ -21,7 +20,8 @@ def view_one(request, pk):
             display.save()
 
     else:
-        form = BidForm()
+        bid_val = display.bid
+        form = BidForm(initial={'bid': bid_val})
 
     context = {
         "display": display,
