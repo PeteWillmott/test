@@ -8,4 +8,4 @@ env/
 img/
 media/
 notes.txt
-env.__py
+env.py

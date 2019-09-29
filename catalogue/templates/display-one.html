@@ -8,6 +8,9 @@
 <p>{{ display.description }}</p>
 <div class="row">
     <div class="col">
+        {% if item.last_bidder == request.user %}
+        <p>You currently lead the bidding</p>
+        {% endif %}
         <form method="post">
             {% csrf_token %}
 

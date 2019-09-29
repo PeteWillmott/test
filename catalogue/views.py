@@ -12,6 +12,7 @@ def view_all(request):
 def view_one(request, pk):
     display = Catalogue.objects.get(id=pk)
 
+
     if request.method == 'POST':
         form = BidForm(request.POST)
         if form.is_valid():
