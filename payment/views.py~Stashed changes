@@ -1,0 +1,18 @@
+from django.shortcuts import render
+from .forms import CustomerForm, Billing_AddressForm, Delivery_AddressForm
+
+def customer_details(request):
+    form = CustomerForm
+    return render(request, 'customer-details.html', {"form": form})
+
+def shipping_details(request):
+    s_form = Delivery_AddressForm
+    return render(request, 'shipping-details.html', {"s_form": s_form})
+
+def billing_details(request):
+    b_form = Billing_AddressForm
+    return render(request, 'billing-details.html', {"b_form": b_form})
+
+
+def payment_details(request):
+    return render(request, 'payment-details.html')

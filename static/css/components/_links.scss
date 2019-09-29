@@ -8,3 +8,18 @@
 a {
     @extend %link;
 }
+
+.selected-link {
+    color: $bg-white;
+    &:hover {
+        color: $bg-white;
+    }
+}
+
+.unselected-link {
+    color: darken( $bg-white, 70% );
+    &:hover {
+        color: darken( $bg-white, 70% );
+    }
+}
+

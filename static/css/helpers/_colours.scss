@@ -20,6 +20,9 @@ $twitter: #1da1f2;
 $nav-bg: rgb(219, 233, 238);
 $mid-blue: rgb(74, 111, 165);
 $bg-white: rgb(249,249,249);
+$muted: rgba(79, 109, 122, 1);
+$attention: rgba(22, 96, 136, 1);
+
 
 body {
     background-color: $bg-white;
@@ -52,4 +55,12 @@ footer {
     border-width: 1px;
     padding: 5px;
     border-radius: 15px;
+}
+
+.selected {
+    background-color: $attention;
+}
+
+.unselected {
+    background-color: lighten( $attention, 30% );
 }

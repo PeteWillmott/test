@@ -46,6 +46,14 @@ footer {
   border-radius: 15px;
 }
 
+.selected {
+  background-color: #166088;
+}
+
+.unselected {
+  background-color: #54b1e3;
+}
+
 /* ----- TITLES, HEADINGS AND TEXT ---------------------------- */
 h1, h2, .title {
   font-family: 'Cinzel Decorative', cursive;
@@ -224,6 +232,22 @@ a:hover {
   text-decoration: none;
 }
 
+.selected-link {
+  color: #f9f9f9;
+}
+
+.selected-link:hover {
+  color: #f9f9f9;
+}
+
+.unselected-link {
+  color: #474747;
+}
+
+.unselected-link:hover {
+  color: #474747;
+}
+
 /* ----- SPACING AND ALIGNMENT --------------- */
 .inline {
   display: -webkit-inline-box;
@@ -240,26 +264,30 @@ a:hover {
   bottom: 0;
 }
 
-.small-bg-img {
+.enclose {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.bg, .small-bg-img, .large-bg-img, .header-bg-img, .about-bg, .contact-bg {
+  background-color: #f9f9f9;
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
+}
+
+.small-bg-img {
   width: 150px;
   height: 150px;
   margin: 0 auto;
 }
 
 .large-bg-img {
-  background-color: #f9f9f9;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
   height: 400px;
   margin: 0 auto;
 }
 
 .blog-img {
-<<<<<<< HEAD
   display: block;
   margin: auto;
   height: 15vh;
@@ -293,19 +321,9 @@ a:hover {
   display: block;
   margin: auto;
   max-height: 200px;
-=======
-  width: 100px;
-  height: 100px;
-  display: block;
-  margin: auto;
->>>>>>> feature_index_integration
 }
 
 .header-bg-img {
-  background-color: #f9f9f9;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
   margin: 0 auto;
   height: 25vh;
 }
@@ -363,23 +381,12 @@ a:hover {
     height: 35vh;
   }
 }
-<<<<<<< HEAD
-=======
 
 .about-bg {
   background-image: url("/static/img/about.jpg");
-  background-color: #f9f9f9;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
 }
 
 .contact-bg {
   background-image: url("/static/img/contact.png");
-  background-color: #f9f9f9;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
 }
->>>>>>> feature_index_integration
 /*# sourceMappingURL=main.css.map */
