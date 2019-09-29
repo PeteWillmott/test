@@ -10,6 +10,7 @@
 <h3>sub catagories</h3>
 <div>
     {% for item in catalogue %}
+    {% if item.sale_status is False %}
     <div>
         <div class="row">
             <div class="col-6">
@@ -21,8 +22,7 @@
                 {{ item.name | title }}<br>
                 &#163;{{ item.price }}<br>
                 
-                <span class="small">number of bids, current bid, make a bid<br>
-                if allowed buy immediately button with new price</span>
+                <span class="small">number of bids, current bid, make a bid</span>
             </div>
         </div>
         <div class="row">
@@ -33,6 +33,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
 </div>
 
