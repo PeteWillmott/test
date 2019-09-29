@@ -8,6 +8,7 @@ class Billing_Address_Form(ModelForm):
     class Meta:
         model = Billing_Address
         fields = [
+            'title',
             'billing_name',
             'street1',
             'street2',
@@ -46,14 +47,13 @@ class Recipient_Form(forms.Form):
         widget=forms.RadioSelect,
         empty_label=None
     )
-    
-    
+
     def __init__(self, *args, user=None, **kwargs):
         if user is None:
             raise ValueError("Missing user")
         super().__init__(*args, **kwargs)
         self.fields['recipient'].queryset = Delivery_Address.objects.filter(user=user)
-    
+
     def clean_recipient(self):
         recipient = self.cleaned_data.get('recipient')
         return recipient

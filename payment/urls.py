@@ -1,12 +1,11 @@
 from django.urls import path, include
-from . import views
+from .views import billing, payment
 from .models import Billing_Address, Delivery_Address
 from .forms import Billing_Address_Form, Delivery_Address_Form
 
 app_name = 'payment'
 urlpatterns = [
-    #path('customer', views.customer_details, name="customer-details"),
-    #path('shipping', views.shipping_details, name="shipping-details"),
-    path('', views.payment, name="payment-details"),
-    #path('pay', views.payment_details, name="payment-details"),
+    path('pay', payment, name="payment"),
+    path('', billing, name="billing"),
+    # path('pay', views.pay, name="pay")
 ]
