@@ -7,7 +7,7 @@
         <img class="head-img" src="{{ newest.image.url }}">
     </div>
 </div>
-<h3>sub catagories</h3>
+
 <div>
     {% for item in catalogue %}
     {% if item.sale_status is False %}
@@ -27,13 +27,12 @@
                 {% if item.last_bidder == request.user %}
                 <p>You currently lead the bidding</p>
                 {% endif %}
-                Current bid&#163; {{ item.bid }}</small></p>
-
+                <p><small>Current bid&#163; {{ item.bid }}</small></p>
             </div>
         </div>
         <div class="row  border-bottom  border-primary">
             <div class="col  ml-3">
-                <p>{{ item.description |truncatewords:50 }}
+                <p>{{ item.description | truncatewords:50 }}
                 </p>
             </div>
         </div>

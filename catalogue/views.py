@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from datetime import datetime
 from .models import Catalogue
 from .forms import CatalogueForm, BidForm
 
@@ -11,28 +12,37 @@ def view_all(request):
 
 def view_one(request, pk):
     display = Catalogue.objects.get(id=pk)
+    open = Catalogue.objects.filter(start__lte=datetime.now()).filter(finish__gte=datetime.now())
 
-    if request.method == 'POST':
-        form = BidForm(request.POST)
-        if form.is_valid():
-            display.bid = form.cleaned_data.get('bid')
-            display.last_bidder = request.user
-            display.save()
+    if display in open:
+
+        if request.method == 'POST':
+            form = BidForm(request.POST)
+            if form.is_valid():
+                display.bid = form.cleaned_data.get('bid')
+                display.last_bidder = request.user
+                display.save()
+
+        else:
+            bid_val = display.bid
+            form = BidForm(initial={'bid': bid_val})
+
+        context = {
+            "display": display,
+            "form": form
+        }
+        return render(request, 'display-one.html', context)
 
     else:
-        bid_val = display.bid
-        form = BidForm(initial={'bid': bid_val})
-
-    context = {
-        "display": display,
-        "form": form
-    }
-
-    return render(request, 'display-one.html', context)
+        context = {
+            "display": display,
+        } 
 
 
-def view_era(request):
-    era = "medieval"
+    return render(request, 'display-one-closed.html', context)
+
+
+def view_era(request, era):
     era_subset = Catalogue.objects.filter(era=era)
     newest = Catalogue.objects.filter(era=era).last()
     context = {
