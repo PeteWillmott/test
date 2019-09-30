@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url, include
 from django.conf import settings
 from django.conf.urls.static import static
-from home.urls import index, about, contact
+#from home.urls import index, about, contact
 from accounts.urls import login, logout, register
 from news.urls import news, reviews
 from news.models import News, Review
-from catalogue import views as user_views
+from catalogue import urls as catalogue_urls
+from catalogue.views import view_all, view_era, view_one
 from catalogue.models import Catalogue
 from .settings import MEDIA_ROOT
 
@@ -33,8 +35,7 @@ urlpatterns = [
     path('register', register, name="register"),
     path('news', news, name="news"),
     path('reviews', reviews, name="reviews"),
-    path('auctions/', include('catalogue.urls')),
-    path('payment/', include('payment.urls')),
+    url(r'^auctions/', include(catalogue_urls)),
 ]
 
 if settings.DEBUG:

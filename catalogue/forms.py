@@ -1,25 +1,21 @@
 from django import forms
+from django.forms import ModelForm
+from django.contrib.auth.models import User
 from .models import Catalogue
 
-class CatalogueForm(forms.ModelForm):
+
+
+class BidForm(forms.Form):
+
+    bid = forms.DecimalField(max_digits=12, decimal_places=2)
+
+
+class CatalogueForm(ModelForm):
     class Meta:
         model = Catalogue
         fields = [
             'name',
             'description',
-            'price',
-            'culture',
             'era',
             'image'
         ]
-
-
-class BidForm(forms.ModelForm):
-    bid = forms.DecimalField(max_digits=12, decimal_places=2)
-    class Meta:
-        model = Catalogue
-        fields = ['bid']
-
-    def clean_bid(self):
-        bid = self.cleaned_data.get('bid')
-        return bid

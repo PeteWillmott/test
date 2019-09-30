@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+from datetime import datetime
 from .models import Catalogue
-#from bid.models import Bid
 from .forms import CatalogueForm, BidForm
-#from bid.forms import BidForm
+
 
 def view_all(request):
     catalogue = Catalogue.objects.all()
@@ -13,34 +13,44 @@ def view_all(request):
 def view_one(request, pk):
     display = Catalogue.objects.get(id=pk)
 
-    if request.method == 'POST':
-        form = BidForm(request.POST)
-        if form.is_valid():
-            #product = form.cleaned_data['product']
-            bid = form.cleaned_data['bid']
-            c = Catalogue.objects.get(id=pk)
-            c.bid = bid
-            c.save()
+    open = Catalogue.objects.filter(start__lte=datetime.now()).filter(finish__gte=datetime.now())
+
+    if display in open:
+
+        if request.method == 'POST':
+            form = BidForm(request.POST)
+            if form.is_valid():
+                display.bid = form.cleaned_data.get('bid')
+                display.last_bidder = request.user
+                display.save()
+
+        else:
+            bid_val = display.bid
+            form = BidForm(initial={'bid': bid_val})
+
+        context = {
+            "display": display,
+            "form": form
+        }
+        return render(request, 'display-one.html', context)
 
     else:
-        form =BidForm()
+        context = {
+            "display": display,
+        } 
 
+
+    return render(request, 'display-one-closed.html', context)
+
+
+def view_era(request, era):
+    era_subset = Catalogue.objects.filter(era=era)
+    newest = Catalogue.objects.filter(era=era).last()
     context = {
-        "display": display,
-        "form": form
-    }
-
-    return render(request, 'display-one.html', context)
-
-
-def viking_era(request):
-    viking = Catalogue.objects.filter(era='viking')
-    newest = Catalogue.objects.filter(era='viking').last()
-    context = {
-        "viking": viking,
+        "era_subset": era_subset,
         "newest": newest
         }
-    return render(request, 'viking-era.html', context)
+    return render(request, 'display-era.html', context)
 
 
 
