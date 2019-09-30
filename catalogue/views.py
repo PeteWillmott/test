@@ -12,6 +12,7 @@ def view_all(request):
 
 def view_one(request, pk):
     display = Catalogue.objects.get(id=pk)
+
     open = Catalogue.objects.filter(start__lte=datetime.now()).filter(finish__gte=datetime.now())
 
     if display in open:
