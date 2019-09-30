@@ -6,14 +6,12 @@
     <div class="col">
         <div class="header-bg-img" style="background-image: url('{{ newest_picture.image.url }}')">
             <div class="bottom">
-                <p class="ml-3  contrast-bg"><a href="#">Details</a></p>
+                <p class="ml-3  contrast-bg"><a href="{% url 'catalogue:catalogue-one' newest_picture.id %}">Details</a></p>
             </div>
         </div>
     </div>
 </div>
-    {% block featured %}
-        <!-- include 'featured-items.html' -->
-    {% endblock %}
+    
 <div class="row">
     {% for blog in top_two_blogs %}
         <div class="col">

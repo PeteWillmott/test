@@ -21,9 +21,6 @@ class Catalogue(models.Model):
     def __str__(self):
         return self.name
 
-    """def auction_open(self):
-        return self.start <= datetime.datetime.now().time() < self.finish"""
-
 
     def get_absolute_url(self):
         return reverse("catalogue:view_one", args=[str(self.pk)])
