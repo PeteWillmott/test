@@ -6,7 +6,7 @@ from .models import Catalogue
 
 
 class BidForm(forms.Form):
-
+"""Passes bid to view"""
     bid = forms.DecimalField(max_digits=12, decimal_places=2)
 
 

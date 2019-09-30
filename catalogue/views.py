@@ -6,12 +6,17 @@ from .forms import CatalogueForm, BidForm
 
 
 def view_all(request):
+    """Returns the whole catalogue to browse."""
     catalogue = Catalogue.objects.all()
     newest = Catalogue.objects.last()
     return render(request, 'display-all.html', {"catalogue": catalogue, "newest": newest})
 
 @login_required
 def view_one(request, pk):
+    """
+    Displays details of a specific item.
+    Also handles bid functions.
+    """
     display = Catalogue.objects.get(id=pk)
 
     open = Catalogue.objects.filter(start__lte=datetime.now()).filter(finish__gte=datetime.now())
@@ -45,6 +50,7 @@ def view_one(request, pk):
 
 
 def view_era(request, era):
+    """Returns a subset of items by historical era."""
     era_subset = Catalogue.objects.filter(era=era)
     newest = Catalogue.objects.filter(era=era).last()
     context = {

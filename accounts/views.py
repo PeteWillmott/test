@@ -29,7 +29,7 @@ def login(request):
 
 @login_required
 def logout(request):
-    """Logout user."""
+    """Logout user. Prevents unlogged in users logging out."""
     auth.logout(request)
     messages.success(request, "You have successfully been logged out")
 
