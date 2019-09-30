@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from datetime import datetime
+from datetime import datetime, timezone
+from django.contrib.auth.decorators import login_required
 from .models import Catalogue
 from .forms import CatalogueForm, BidForm
 
@@ -9,7 +10,7 @@ def view_all(request):
     newest = Catalogue.objects.last()
     return render(request, 'display-all.html', {"catalogue": catalogue, "newest": newest})
 
-
+@login_required
 def view_one(request, pk):
     display = Catalogue.objects.get(id=pk)
 

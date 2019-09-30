@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib.auth.decorators import login_required
 from .forms import Billing_Address_Form, Delivery_Address_Form,  Recipient_Form
 from .models import Delivery_Address, Billing_Address
 
-
+@login_required
 def payment(request):
 
     form_data = request.POST or None
@@ -39,13 +40,7 @@ def payment(request):
     return render(request, "delivery-address.html", context)
 
 
-"""def pay(request, **kwargs):
-    return render(
-            request,
-            "payment-details.html"
-    )"""
-
-
+@login_required
 def billing(request):
     form_data = request.POST or None
     instance =  Billing_Address.objects.get(user=request.user)
