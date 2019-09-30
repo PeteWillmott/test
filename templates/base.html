@@ -38,14 +38,8 @@
             <div class="col">
                 <p class="title"><a class="navbar-brand  title" href="{% url 'home:index' %}">Grays Auction House</a></p>
             </div>
-            
-            <div class="col">
-                <form class="form-inline  my-2  my-lg-0">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                </form>
-            </div>
-            <div class="col-2">
+
+            <div class="col-4">
                 {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}" class="navbar-text">Logout</a>
                 {% else %}
@@ -131,29 +125,36 @@
             </div>
         </div>
 
-        <p>
-            <button class="btn" type="button" data-toggle="collapse" data-target="#aboutUs" aria-expanded="false" aria-controls="aboutUs">
-                About Us <i class="fas fa-caret-down"></i>
-            </button>
-        </p>
-        <div class="collapse" id="aboutUs">
-                <div>
-                    <a class="px-3" href="{% url 'home:about' %}">About Us</a><br>
-                    <a class="px-3" href="{% url 'home:contact' %}">Contact Us</a>
+        <div class="row">
+            <div class="col-12  col-md-6">
+                <p>
+                    <button class="btn" type="button" data-toggle="collapse" data-target="#aboutUs" aria-expanded="false" aria-controls="aboutUs">
+                        About Us <i class="fas fa-caret-down"></i>
+                    </button>
+                </p>
+                <div class="collapse" id="aboutUs">
+                    <div>
+                        <a class="px-3" href="{% url 'home:about' %}">About Us</a><br>
+                        <a class="px-3" href="{% url 'home:contact' %}">Contact Us</a>
+                    </div>
                 </div>
             </div>
-        <p>
-            <button class="btn" type="button" data-toggle="collapse" data-target="#resources" aria-expanded="false" aria-controls="resources">
-                Resources <i class="fas fa-caret-down"></i>
-            </button>
-        </p>
-        <div class="collapse" id="resources">
-            <div>
-                <a href="{% url 'home:faq' %}"">Help and FAQ's</a><br>
-                <a href="{% url 'home:how_to' %}">Bidding in an Auction</a><br>
-                <a href="{% url 'home:shipping' %}">Shipping</a><br>
+            <div class="col-12  col-md-6">
+                <p>
+                    <button class="btn" type="button" data-toggle="collapse" data-target="#resources" aria-expanded="false" aria-controls="resources">
+                        Resources <i class="fas fa-caret-down"></i>
+                    </button>
+                </p>
+                <div class="collapse" id="resources">
+                    <div>
+                        <a href="{% url 'home:faq' %}"">Help and FAQ's</a><br>
+                        <a href="{% url 'home:how_to' %}">Bidding in an Auction</a><br>
+                        <a href="{% url 'home:shipping' %}">Shipping</a><br>
+                    </div>
+                </div>
             </div>
         </div>
+        
         <div class="row">
             <div class="col">
                 <p class="left-13"><small><a target="_blank" href="https://gdpr.eu/wp-content/uploads/2019/01/Our-Company-Privacy-Policy.pdf">Privacy Policy</a></small></p>

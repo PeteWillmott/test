@@ -54,4 +54,3 @@ def view_era(request, era):
     return render(request, 'display-era.html', context)
 
 
-
