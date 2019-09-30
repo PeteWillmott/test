@@ -51,7 +51,6 @@ def register(request):
                                         password=request.POST['password1'])
             if user:
                 auth.login(user=user, request=request)
-                title = registration_form.cleaned_data.get('title')
                 first_name = registration_form.cleaned_data.get('first_name')
                 last_name = registration_form.cleaned_data.get('last_name')
                 messages.success(request, f'Account created for {first_name} {last_name}.')
