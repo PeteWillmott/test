@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from home.urls import index, about, contact
+#from home.urls import index, about, contact
 from accounts.urls import login, logout, register
 from news.urls import news, reviews
 from news.models import News, Review
-from catalogue import views as user_views
+#from catalogue import views as user_views
 from catalogue.models import Catalogue
 from .settings import MEDIA_ROOT
 

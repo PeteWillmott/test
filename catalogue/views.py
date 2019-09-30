@@ -31,14 +31,15 @@ def view_one(request, pk):
     return render(request, 'display-one.html', context)
 
 
-def viking_era(request):
-    viking = Catalogue.objects.filter(era='viking')
-    newest = Catalogue.objects.filter(era='viking').last()
+def view_era(request):
+    era = "medieval"
+    era_subset = Catalogue.objects.filter(era=era)
+    newest = Catalogue.objects.filter(era=era).last()
     context = {
-        "viking": viking,
+        "era_subset": era_subset,
         "newest": newest
         }
-    return render(request, 'viking-era.html', context)
+    return render(request, 'display-era.html', context)
 
 
 

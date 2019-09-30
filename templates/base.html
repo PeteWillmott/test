@@ -81,16 +81,22 @@
     <section id="time-categories container-fluid">
         <div class="row">
             <div class="col  time-select">
-                <p class="text-center">Viking</p>
+                <a href="{% url 'catalogue:view_era' %}"><p class="text-center">Viking</p></a>
             </div>
             <div class="col  time-select">
-                <p class="text-center">17th Century</p>
+                <a href="{% url 'catalogue:view_era' %}">
+                    <p class="text-center">17th Century</p>
+                </a>
             </div>
             <div class="col  time-select">
-                <p class="text-center">18th Century</p>
+                <a href="{% url 'catalogue:view_era' %}">
+                    <p class="text-center">18th Century</p>
+                </a>
             </div>
             <div class="col  time-select">
-                <p class="text-center">Victorian</p>
+                <a href="{% url 'catalogue:view_era' %}">
+                    <p class="text-center">Victorian</p>
+                </a>
             </div>
         </div>
     </section>
