@@ -27,7 +27,7 @@ SECRET_KEY = 'bsyna5z8nhr$81kq1(01y#yn7#d@7h^ng9khkl88%tpmlq$_il'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', https://grays-auctions.herokuapp.com/]
+ALLOWED_HOSTS = ['127.0.0.1', grays-auctions.herokuapp.com/]
 
 
 # Application definition
