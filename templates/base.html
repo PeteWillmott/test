@@ -46,35 +46,35 @@
                     <a href="{% url 'login' %}" class="navbar-text">Login</a>
                 {% endif %}
             </div>
-        </nav>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="row">
-                <div class="col-12">
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="row">
+            <div class="col-12">
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'catalogue:catalogue-all' %}">Auctions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'news' %}">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{% url 'reviews' %}">Reviews</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'catalogue:catalogue-all' %}">Auctions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'news' %}">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'reviews' %}">Reviews</a>
-                                </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">How it Works</a>
-                            </li>
-                        </ul>
-                    </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home:how_to' %}">How it Works</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 
-    <section id="time-categories container-fluid">
+    <section id="time-categories" class="container-fluid">
         <div class="row">
             <div class="col  time-select">
                 <a href="{% url 'catalogue:view_era' 1 %}" class="selected-link"><p class="text-center">Early Medieval</p></a>
@@ -147,7 +147,7 @@
                 </p>
                 <div class="collapse" id="resources">
                     <div>
-                        <a href="{% url 'home:faq' %}"">Help and FAQ's</a><br>
+                        <a href="{% url 'home:faq' %}">Help and FAQ's</a><br>
                         <a href="{% url 'home:how_to' %}">Bidding in an Auction</a><br>
                         <a href="{% url 'home:shipping' %}">Shipping</a><br>
                     </div>
