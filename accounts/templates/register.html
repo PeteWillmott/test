@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static from staticfiles %}
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}Registration Page{% endblock %}
+{% block content %}
+<div class="enclose">
+    <form method="POST">
+        {% csrf_token %} 
+        {{ customer_form | crispy }}
+        {{ registration_form | crispy }}
+        <input type="checkbox" name="newsletter-opt-in" value="newsletter">Sign up for our newlsetter.<br>
+        <input type="checkbox" name="terms-conditions" value="accept-tc">I have read and accept the site's terms and conditions.<br>
+        <button type="submit" class="btn btn-primary">Create Account</button>
+    </form>
+</div>
+{% endblock %}

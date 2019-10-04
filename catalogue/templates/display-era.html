@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}Catalogue Display by Era{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <img class="head-img" src="{{ newest.image.url }}">
+    </div>
+</div>
+
+<div>
+    {% if era_subset %}
+        {% for item in era_subset %}
+        <div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="small-bg-img" style="background-image: url('{{ item.image.url }}')"></div>
+                    <p class="ml-3"><a href="{% url 'catalogue:catalogue-one' item.id %}">Details</a></p>
+                </div>
+
+                <div class="col-6">
+                        <p>{{ item.name | title }}<br></p>
+                        {% if item.start and item.finish %}
+                        <p><small>Auction dates <br>
+                        {{ item.start }} {{ item.finish }}<br>
+                        {% endif %}
+                        </small></p>
+                        {% if item.last_bidder == request.user %}
+                        <p>You currently lead the bidding</p>
+                        {% endif %}
+                        <p><small>Current bid &#163; {{ item.bid }}</small></p>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col  ml-3">
+                    <p>{{ item.description | truncatewords:50 }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>We currently don't have any items of this age, please look in again later. We regularly aquire items of all ages and update our catalogue as often as possible.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

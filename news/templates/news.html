@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block page_title %}Gray and Sons News{% endblock %}
+{% block page_heading %}News{% endblock %}
+{% block content %}
+
+{% for article in articles %}
+    <h3>
+        {{ article.title }}
+        <small class="text-muted">{{ article.author }} {{ article.pub_date | date:"D d M Y" }}</small>
+    </h3>
+    <div class="row">
+        <div class="col">
+            <p>{{ article.text }}</p>
+        </div>
+
+        {% if article.image %}
+            <div class="col-4">
+                    <img class="blog-img  px-1" src="{{ article.image.url }}">
+            </div>
+        {% endif %}
+    </div>
+    
+{% endfor %}
+
+{% endblock %}

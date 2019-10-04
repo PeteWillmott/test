@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block page_title %}Gray and Sons News{% endblock %}
+{% block page_heading %}Reviews{% endblock %}
+{% block content %}
+
+{% for items in review %}
+    <h3>
+        {{ item.title }}
+        <small class="text-muted">{{ item.author }}</small>
+        <small class="text-muted">{{ item.pub_date | date:"D d M Y" }}</small>
+    </h3>
+    <p>{{ item.text | truncatewords:10 }}</p>
+{% endfor %}
+{% endblock %}

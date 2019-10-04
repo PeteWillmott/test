@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static from staticfiles %}
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}Login Page{% endblock %}
+{% block content %}
+<div class="enclose">
+    <form method="POST">
+        {% csrf_token %} {{ login_form | crispy }}
+        <button type="submit" class="btn btn-primary">Login</button>
+        <p><a href="#">Forgot your password?</a></p>
+        <p>Don't have an account with us? <a href="{% url 'register' %}">Register now.</a></p>
+    </form>
+</div>
+{% endblock %}

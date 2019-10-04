@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}Add a billing address{% endblock %}
+{% block content %}
+
+<form method="POST">
+    <div class="border  border-primary  enclose">
+        <h4 class="pt-2  ml-2">Billing Address</h4>
+        <div class="ml-2">
+                {% csrf_token %}
+                {{ billing_form | crispy }}
+                <button type="submit" class="btn btn-primary  my-2  ml-2">On to Delivery Address</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
+

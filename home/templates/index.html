@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}Gray and Sons Auction House{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <div class="header-bg-img" style="background-image: url('{{ newest_picture.image.url }}')">
+            <div class="bottom">
+                <p class="ml-3  contrast-bg"><a href="{% url 'catalogue:catalogue-one' newest_picture.id %}">Details</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="row">
+    {% for blog in top_two_blogs %}
+        <div class="col">
+            <h3 class="px-1">{{ blog.title }} <small class="text-muted">{{ blog.pub_date | date:"D d M Y" }}</small></h3>
+            <p>{{ blog.text }}</p>
+            {% if blog.image %}
+                <img class="blog-img  py-2" src="{{ blog.image.url }}" alt="{{ blog.title }} picture.">
+            {% endif%}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

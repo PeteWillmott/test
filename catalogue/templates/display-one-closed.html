@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}catalogue display{% endblock %}
+{% block content %}
+
+<p>{{ display.name | title }}</p>
+<div class="large-bg-img" style="background-image: url('{{ display.image.url }}')"></div>
+<p>{{ display.description | truncatewords:50 }}</p>
+
+{% endblock content %}
