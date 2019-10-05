@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from datetime import datetime, timezone
 from django.contrib.auth.decorators import login_required
 from .models import Catalogue
@@ -11,7 +11,7 @@ def view_all(request):
     newest = Catalogue.objects.last()
     return render(request, 'display-all.html', {"catalogue": catalogue, "newest": newest})
 
-@login_required(login_url='/login/')
+@login_required
 def view_one(request, pk):
     """
     Displays details of a specific item.
@@ -20,6 +20,7 @@ def view_one(request, pk):
     display = Catalogue.objects.get(id=pk)
 
     open = Catalogue.objects.filter(start__lte=datetime.now()).filter(finish__gte=datetime.now())
+    finish = Catalogue.objects.filter(finish__lte=datetime.now())
 
     if display in open:
 
@@ -29,6 +30,9 @@ def view_one(request, pk):
                 display.bid = form.cleaned_data.get('bid')
                 display.last_bidder = request.user
                 display.save()
+
+                if display in finish:
+                    return redirect(reverse('payment:billing'))
 
         else:
             bid_val = display.bid
