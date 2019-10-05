@@ -23,7 +23,7 @@ def view_one(request, pk):
 
     if display in finish:
         if display.last_bidder == request.user:
-            return redirect(reverse('payment:billing'))
+            return redirect(reverse('payment:payment'))
 
     elif display in open:
 

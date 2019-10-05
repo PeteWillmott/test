@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from .forms import Billing_Address_Form, Delivery_Address_Form,  Recipient_Form
 from .models import Delivery_Address, Billing_Address
+from models.catalogue import Catalogue
 
 @login_required(login_url='/login/')
 def payment(request):

@@ -7,5 +7,4 @@ app_name = 'payment'
 urlpatterns = [
     path('pay', payment, name="payment"),
     path('', billing, name="billing"),
-    # path('pay', views.pay, name="pay")
 ]
