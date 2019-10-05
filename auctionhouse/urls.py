@@ -18,10 +18,10 @@ from django.urls import path, include
 from django.conf.urls import url, include
 from django.conf import settings
 from django.conf.urls.static import static
-#from home.urls import index, about, contact
 from accounts.urls import login, logout, register
 from news.urls import news, reviews
 from news.models import News, Review
+from news.views import news, reviews
 from catalogue import urls as catalogue_urls
 from catalogue.views import view_all, view_era, view_one
 from catalogue.models import Catalogue
