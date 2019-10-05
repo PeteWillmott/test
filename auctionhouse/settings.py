@@ -159,4 +159,5 @@ STATIC_URL='https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
+django_heroku.settings(locals(), staticfiles=False)
