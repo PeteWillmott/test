@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'eezzy$461d(ogu=!n#)+yztu+c@qoyex-9gvw^$#&)1_%(*=h='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['ms4-auctionsite.herokuapp.com/']
 
@@ -159,5 +159,4 @@ STATIC_URL='https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-# django_heroku.settings(locals())
-# django_heroku.settings(locals(), staticfiles=False)
+django_heroku.settings(locals())
