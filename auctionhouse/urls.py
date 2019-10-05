@@ -31,7 +31,7 @@ urlpatterns = [
     path('login', login, name="login"),
     path('logout', logout, name="logout"),
     path('register', register, name="register"),
-    path('', include('news.urls')),
+     path('', include('news.urls')),
     url(r'^auctions/', include(catalogue_urls)),
 ]
 
