@@ -24,6 +24,12 @@ def view_one(request, pk):
     if display in finish:
         if display.last_bidder == request.user:
             return redirect(reverse('payment:payment'))
+        
+        context = {
+            "display": display,
+        }
+
+        return render(request, 'display-one-closed.html', context)
 
     elif display in open:
 
