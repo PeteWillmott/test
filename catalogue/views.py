@@ -22,7 +22,7 @@ def view_one(request, pk):
     finish = Catalogue.objects.filter(finish__lte=datetime.now())
 
     if display in finish:
-        if finish.last_bidder == request.user:
+        if display.last_bidder == request.user:
             return redirect(reverse('payment:billing'))
 
     elif display in open:
