@@ -4,12 +4,14 @@
 {% block page_heading %}Reviews{% endblock %}
 {% block content %}
 
+{{ review }}
+
 {% for items in review %}
     <h3>
         {{ item.title }}
         <small class="text-muted">{{ item.author }}</small>
         <small class="text-muted">{{ item.pub_date | date:"D d M Y" }}</small>
     </h3>
-    <p>{{ item.text | truncatewords:10 }}</p>
+    <p>{{ item.text }}</p>
 {% endfor %}
 {% endblock %}
