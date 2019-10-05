@@ -1,17 +1,26 @@
 {% extends 'base.html' %}
-{% load static from staticfiles %}
 {% block page_title %}Gray and Sons News{% endblock %}
 {% block page_heading %}Reviews{% endblock %}
 {% block content %}
 
-{{ review }}
-
-{% for items in review %}
+{% for item in review %}
     <h3>
         {{ item.title }}
         <small class="text-muted">{{ item.author }}</small>
         <small class="text-muted">{{ item.pub_date | date:"D d M Y" }}</small>
     </h3>
-    <p>{{ item.text }}</p>
+
+    <div class="row">
+        <div class="col">
+            <p>{{ item.text }}</p>
+        </div>
+
+        {% if item.image %}
+            <div class="col-4">
+                    <img class="blog-img  px-1" src="{{ item.image.url }}">
+            </div>
+        {% endif %}
+    </div>
+    
 {% endfor %}
 {% endblock %}
