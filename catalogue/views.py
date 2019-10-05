@@ -18,11 +18,14 @@ def view_one(request, pk):
     Also handles bid functions.
     """
     display = Catalogue.objects.get(id=pk)
-
     open = Catalogue.objects.filter(start__lte=datetime.now()).filter(finish__gte=datetime.now())
     finish = Catalogue.objects.filter(finish__lte=datetime.now())
 
-    if display in open:
+    if display in finish:
+        if finish.last_bidder == request.user:
+            return redirect(reverse('payment:billing'))
+
+    elif display in open:
 
         if request.method == 'POST':
             form = BidForm(request.POST)
@@ -30,9 +33,6 @@ def view_one(request, pk):
                 display.bid = form.cleaned_data.get('bid')
                 display.last_bidder = request.user
                 display.save()
-
-                if display in finish:
-                    return redirect(reverse('payment:billing'))
 
         else:
             bid_val = display.bid
@@ -47,10 +47,9 @@ def view_one(request, pk):
     else:
         context = {
             "display": display,
-        } 
+        }
 
-
-    return render(request, 'display-one-closed.html', context)
+        return render(request, 'display-one-closed.html', context)
 
 
 def view_era(request, era):
