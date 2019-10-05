@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from accounts.urls import login, logout, register
 from news.urls import news, reviews
 from news.models import News, Review
+from news.views import reviews
 from catalogue import urls as catalogue_urls
 from catalogue.views import view_all, view_era, view_one
 from catalogue.models import Catalogue
@@ -33,7 +34,7 @@ urlpatterns = [
     path('login', login, name="login"),
     path('logout', logout, name="logout"),
     path('register', register, name="register"),
-    path('news', news, name="news"),
+    path('reviews', reviews, name="reviews"),
     path('reviews', reviews, name="reviews"),
     url(r'^auctions/', include(catalogue_urls)),
 ]
