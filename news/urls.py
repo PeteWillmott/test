@@ -1,8 +1,9 @@
-from django.conf.urls import url
+from django.urls import path
 from .views import news, reviews
 from .models import News, Review
 
+app_name = 'blog'
 urlpatterns = [
-    url(r'^news$', news, name="news"),
-    url(r'^reviews$', reviews, name="reviews"),
+    path('news', news, name="news"),
+    path('reviews', reviews, name="reviews"),
 ]

@@ -60,10 +60,10 @@
                             <a class="nav-link" href="{% url 'catalogue:catalogue-all' %}">Auctions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'news' %}">Blog</a>
+                            <a class="nav-link" href="{% url 'blog:news' %}">Blog</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" href="{% url 'reviews' %}">Reviews</a>
+                                <a class="nav-link" href="{% url 'blog:reviews' %}">Reviews</a>
                             </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'home:how_to' %}">How it Works</a>
@@ -107,21 +107,20 @@
         {% endif %} 
     </section>
 
-    <main>
+    <main class="container-fluid">
             <h1>{% block page_heading %}{% endblock %}</h1>
             {% block content %}
             {% endblock %}
     </main>
     
-    <footer>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <p class="text-center"><a href="https://www.facebook.com" target="_blank"><span><i class="fab  fa-facebook-square  facebook"></i></span></a></p>
-                </div>
-                <div class="col">
-                    <p class="text-center"><a href="https://twitter.com/" target="_blank"><span><i class="fab  fa-twitter  twitter"></i></span></a></p>
-                </div>
+    <footer class="container-fluid">
+
+        <div class="row">
+            <div class="col">
+                <p class="text-center"><a href="https://www.facebook.com" target="_blank"><span><i class="fab  fa-facebook-square  facebook"></i></span></a></p>
+            </div>
+            <div class="col">
+                <p class="text-center"><a href="https://twitter.com/" target="_blank"><span><i class="fab  fa-twitter  twitter"></i></span></a></p>
             </div>
         </div>
 
