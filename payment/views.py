@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from .forms import Billing_Address_Form, Delivery_Address_Form,  Recipient_Form
 from .models import Delivery_Address, Billing_Address
+from catalogue.models import Catalogue
 
 @login_required
 def payment(request):
@@ -10,6 +11,7 @@ def payment(request):
     recipient_form = Recipient_Form(form_data, user=request.user)
     delivery_form = Delivery_Address_Form(form_data)
     billing = Billing_Address.objects.get(user=request.user)
+    item = Catalogue.object.get(last_bidder=request.user)
     
     if request.method == "POST":
         if delivery_form.is_valid():
@@ -20,7 +22,8 @@ def payment(request):
                 request,
                 "payment-details.html",
                 {"address": address_used,
-                "billing": billing},
+                "billing": billing,
+                "item": item},
             )
 
         elif recipient_form.is_valid():
@@ -29,7 +32,8 @@ def payment(request):
                 request,
                 "payment-details.html",
                 {"address": address,
-                "billing": billing},
+                "billing": billing,
+                "item": item},
             )
 
     recipient_check = Delivery_Address.objects.filter(user=request.user)

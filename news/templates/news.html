@@ -2,7 +2,8 @@
 {% block page_title %}Gray and Sons News{% endblock %}
 {% block page_heading %}News{% endblock %}
 {% block content %}
-
+<p>SANITY CHECK - {{ articles }}<br>
+-----</p>
 {% for article in articles %}
     <h3>
         {{ article.title }}
