@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}Shipping Details{% endblock %}
+{% block content %}
+
+<div class="border  border-primary  enclose">
+<form method="POST" novalidate>
+    {% csrf_token %}
+
+    <h4 class="pt-2  ml-2">Delivery Address <small class="text-muted">Step 2 of 3</small></h4>
+    <div class="ml-2">
+        {{ recipient_form | crispy }}
+    </div>
+
+    <button type="button" class="btn  btn-outline-primary  d-block  my-3  ml-2" onclick="toggleFormDisplay('delivery')">Add a recipient.</button>
+
+    <div id="delivery" class="d-none  ml-2">
+        {{ delivery_form | crispy }}
+    </div>
+
+    <button type="submit" class="btn btn-primary  my-2  ml-2">To Step 3</button>
+
+</form>
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
+

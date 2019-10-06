@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles%}
+
+{% block stripe-css %}
+<link rel="stylesheet" href="{% static 'css/stripe.min.css' %}" type="text/css">
+{% endblock %}
+
+{% block page_title %}Gray and Sons{% endblock %}
+{% block page_heading %}Payment Details{% endblock %}
+{% block content %}
+
+<div class="border  border-primary  enclose">
+<div class="row">
+    <div class="col"><h4 class="pt-2  ml-2">Delivery Address <small class="text-muted">Step 3 of 3</small></h4></div>
+</div>
+    <div class="row">
+        <div class="col  col-md-5  offset-md-1">
+            <p>{{ address.title | title }} {{ address.delivery_name | title }}<br>
+            {{ address.street1 | title}}<br>
+            {% if address.street2 %}
+                {{ address.street2 | title}}<br>
+            {% endif %}
+            {{ address.town | title}}<br>
+            {{ address.county | title}}<br>
+            {{ address.postcode | title}}<br>
+            {{ address.country | title}}<br>
+            </p>
+        </div>
+        <div class="col  col-md-6">
+            <p>
+                {{ billing.billing_name | title }}<br>
+                {{ billing.street1 | title}}<br>
+                {% if billing.street2 %}
+                    {{ billing.street2 | title}}<br>
+                {% endif %}
+                {{ billing.town | title}}<br>
+                {{ billing.county | title}}<br>
+                {{ billing.postcode | title}}<br>
+                {{ billing.country | title}}<br>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="border  border-primary  enclose">
+  <div class="row">
+      <div class="class">
+            <p>{{ item.name | title }} {{ item.bid }}</p>
+      </div>
+  </div>
+</div>
+
+<div class="border  border-primary  enclose  mt-2">
+  <form action="/charge" method="post" id="payment-form">
+        <div>
+            <label for="card-element" class="pt-2  ml-2">
+            Credit or debit card
+            </label>
+            <div class="mx-2" id="card-element">
+                <!-- A Stripe Element will be inserted here. -->
+            </div>
+
+            <!-- Used to display form errors. -->
+            <div id="card-errors" role="alert"></div>
+        </div>
+        <button class="my-2 ml-2">Submit Payment</button>
+  </form>
+</div>
+
+<a href="#">Back</a>
+
+<script>
+// Create a Stripe client.
+var stripe = Stripe('pk_test_WMQVmCtHBkXuxzLApLOM8AkW00G5XbFZ23');
+
+// Create an instance of Elements.
+var elements = stripe.elements();
+
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+var style = {
+  base: {
+    color: '#32325d',
+    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    fontSmoothing: 'antialiased',
+    fontSize: '16px',
+    '::placeholder': {
+      color: '#aab7c4'
+    }
+  },
+  invalid: {
+    color: '#fa755a',
+    iconColor: '#fa755a'
+  }
+};
+
+// Create an instance of the card Element.
+var card = elements.create('card', {style: style});
+
+// Add an instance of the card Element into the `card-element` <div>.
+card.mount('#card-element');
+
+// Handle real-time validation errors from the card Element.
+card.addEventListener('change', function(event) {
+  var displayError = document.getElementById('card-errors');
+  if (event.error) {
+    displayError.textContent = event.error.message;
+  } else {
+    displayError.textContent = '';
+  }
+});
+
+// Handle form submission.
+var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  stripe.createToken(card).then(function(result) {
+    if (result.error) {
+      // Inform the user if there was an error.
+      var errorElement = document.getElementById('card-errors');
+      errorElement.textContent = result.error.message;
+    } else {
+      // Send the token to your server.
+      stripeTokenHandler(result.token);
+    }
+  });
+});
+
+// Submit the form with the token ID.
+function stripeTokenHandler(token) {
+  // Insert the token ID into the form so it gets submitted to the server
+  var form = document.getElementById('payment-form');
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+  form.appendChild(hiddenInput);
+
+  // Submit the form
+  form.submit();
+}
+</script>
+
+{% endblock %}
+
+
+
