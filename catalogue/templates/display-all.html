@@ -9,37 +9,37 @@
     </div>
 </div>
 
-<div>
-    {% for item in catalogue %}
-    {% if item.sale_status is False %}
-    <div>
-        <div class="row">
-            <div class="col-6">
-                <div class="small-bg-img" style="background-image: url('{{ item.image.url }}')"></div>
-                <p class="ml-3"><a href="{% url 'catalogue:catalogue-one' item.id %}">Details</a></p>
-            </div>
 
-            <div class="col-6">
-                <p>{{ item.name | title }}<br></p>
-                {% if item.start and item.finish %}
-                <p><small>Auction dates <br>
-                {{ item.start }} {{ item.finish }}<br>
-                {% endif %}
-                {% if item.last_bidder == request.user %}
-                <p>You currently lead the bidding</p>
-                {% endif %}
-                <p><small>Current bid&#163; {{ item.bid }}</small></p>
-            </div>
+{% for item in catalogue %}
+{% if item.sale_status is False %}
+<div>
+    <div class="row">
+        <div class="col-6">
+            <div class="small-bg-img" style="background-image: url('{{ item.image.url }}')"></div>
+            <p class="ml-3"><a href="{% url 'catalogue:catalogue-one' item.id %}">Details</a></p>
         </div>
-        <div class="row  border-bottom  border-primary">
-            <div class="col  ml-3">
-                <p>{{ item.description | truncatewords:50 }}
-                </p>
-            </div>
+
+        <div class="col-6">
+            <p>{{ item.name | title }}<br></p>
+            {% if item.start and item.finish %}
+            <p><small>Auction dates <br>
+            {{ item.start }} {{ item.finish }}<br>
+            {% endif %}
+            {% if item.last_bidder == request.user %}
+            <p>You currently lead the bidding</p>
+            {% endif %}
+            <p><small>Current bid&#163; {{ item.bid }}</small></p>
         </div>
     </div>
-    {% endif %}
-    {% endfor %}
+    <div class="row  border-bottom  border-primary">
+        <div class="col  ml-3">
+            <p>{{ item.description | truncatewords:50 }}
+            </p>
+        </div>
+    </div>
 </div>
+{% endif %}
+{% endfor %}
+
 
 {% endblock %}
