@@ -34,7 +34,7 @@ def payment(request):
     # except ObjectDoesNotExist:
     #     billing = None
     billing = Billing_Address.objects.get(user=request.user)
-    item = Catalogue.object.get(last_bidder=request.user)
+    item = Catalogue.objects.get(last_bidder=request.user)
     
     if request.method == "POST":
         if delivery_form.is_valid():
