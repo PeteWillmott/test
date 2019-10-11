@@ -6,7 +6,7 @@ from .models import Delivery_Address, Billing_Address
 from catalogue.models import Catalogue
 
 @login_required(login_url='/login/')
-def billing(request, pk):
+def billing(request, id):
     """Displays registered billing address for confirmation or blank form for a new address."""
     form_data = request.POST or None
     try:
@@ -25,14 +25,14 @@ def billing(request, pk):
 
 
 @login_required(login_url='/login/')
-def payment(request, pk):
+def payment(request, id):
 
     """Allows selection or entry of delivery address, displays addresses, item details and stripe payment form."""
     form_data = request.POST or None
     recipient_form = Recipient_Form(form_data, user=request.user)
     delivery_form = Delivery_Address_Form(form_data)
     billing = Billing_Address.objects.get(user=request.user)
-    item = Catalogue.objects.get(id=pk)
+    item = Catalogue.objects.get(id=id)
     
     if request.method == "POST":
         if delivery_form.is_valid():
