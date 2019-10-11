@@ -6,7 +6,7 @@ from .models import Delivery_Address, Billing_Address
 from catalogue.models import Catalogue
 
 @login_required(login_url='/login/')
-def billing(request):
+def billing(request, pk):
     form_data = request.POST or None
     try:
         instance =  Billing_Address.objects.get(user=request.user)
