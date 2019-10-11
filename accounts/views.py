@@ -54,7 +54,7 @@ def register(request):
                 first_name = registration_form.cleaned_data.get('first_name')
                 last_name = registration_form.cleaned_data.get('last_name')
                 messages.success(request, f'Account created for {first_name} {last_name}.')
-                return render(request, 'index.html')
+                return redirect(reverse('home:index'))
             else:
                 messages.error(request, "Unable to register your account at this time")
     else:
