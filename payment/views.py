@@ -8,7 +8,11 @@ from catalogue.models import Catalogue
 @login_required(login_url='/login/')
 def billing(request):
     form_data = request.POST or None
-    instance =  Billing_Address.objects.get(user=request.user)
+    try:
+        instance =  Billing_Address.objects.get(user=request.user)
+    except ObjectDoesNotExist:
+        instance = None
+    # instance =  Billing_Address.objects.get(user=request.user)
     billing_form = Billing_Address_Form(form_data, instance=instance)
 
     if request.method == "POST":
