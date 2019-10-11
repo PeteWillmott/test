@@ -1,8 +1,23 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 from .forms import Billing_Address_Form, Delivery_Address_Form,  Recipient_Form
 from .models import Delivery_Address, Billing_Address
 from catalogue.models import Catalogue
+
+@login_required(login_url='/login/')
+def billing(request):
+    form_data = request.POST or None
+    instance =  Billing_Address.objects.get(user=request.user)
+    billing_form = Billing_Address_Form(form_data, instance=instance)
+
+    if request.method == "POST":
+        if billing_form.is_valid():
+            billing_form.save()
+            return redirect(reverse('payment:payment'))
+
+    return render(request, "billing-address.html", {"billing_form": billing_form})
+
 
 @login_required(login_url='/login/')
 def payment(request):
@@ -10,6 +25,10 @@ def payment(request):
     form_data = request.POST or None
     recipient_form = Recipient_Form(form_data, user=request.user)
     delivery_form = Delivery_Address_Form(form_data)
+    # try:
+    #     billing = Billing_Address.objects.get(user=request.user)
+    # except ObjectDoesNotExist:
+    #     billing = None
     billing = Billing_Address.objects.get(user=request.user)
     item = Catalogue.object.get(last_bidder=request.user)
     
@@ -43,17 +62,4 @@ def payment(request):
         context = {"delivery_form": delivery_form}
     return render(request, "delivery-address.html", context)
 
-
-@login_required(login_url='/login/')
-def billing(request):
-    form_data = request.POST or None
-    instance =  Billing_Address.objects.get(user=request.user)
-    billing_form = Billing_Address_Form(form_data, instance=instance)
-
-    if request.method == "POST":
-        if billing_form.is_valid():
-            billing_form.save()
-            return redirect(reverse('payment:payment'))
-
-    return render(request, "billing-address.html", {"billing_form": billing_form})
 
