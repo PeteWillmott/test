@@ -44,11 +44,7 @@ def payment(request):
     return render(request, "delivery-address.html", context)
 
 
-<<<<<<< HEAD
 @login_required(login_url='/login/')
-=======
-@login_required
->>>>>>> 8082be870b411c8693aaebbe37006a778c962dd8
 def billing(request):
     form_data = request.POST or None
     instance =  Billing_Address.objects.get(user=request.user)
