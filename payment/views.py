@@ -18,23 +18,19 @@ def billing(request, pk):
     if request.method == "POST":
         if billing_form.is_valid():
             billing_form.save()
-            return redirect(reverse('payment:payment'))
+            return redirect('payment:payment', id=pk)
 
     return render(request, "billing-address.html", {"billing_form": billing_form})
 
 
 @login_required(login_url='/login/')
-def payment(request):
+def payment(request, pk):
 
     form_data = request.POST or None
     recipient_form = Recipient_Form(form_data, user=request.user)
     delivery_form = Delivery_Address_Form(form_data)
-    # try:
-    #     billing = Billing_Address.objects.get(user=request.user)
-    # except ObjectDoesNotExist:
-    #     billing = None
     billing = Billing_Address.objects.get(user=request.user)
-    item = Catalogue.objects.get(last_bidder=request.user)
+    item = Catalogue.objects.get(id=pk)
     
     if request.method == "POST":
         if delivery_form.is_valid():
