@@ -31,7 +31,7 @@ def view_one(request, pk):
 
         if display in finish:
             if display.last_bidder == request.user:
-                return redirect('payment:payment', id=pk)
+                return redirect('payment:', id=pk)
             
             context = {
                 "display": display,
