@@ -1,6 +1,7 @@
-from django.shortcuts import render, reverse, redirect, get_object_or_404
 from datetime import datetime, timezone
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Catalogue
 from .forms import CatalogueForm, BidForm
 
@@ -18,6 +19,7 @@ def view_one(request, pk):
     """
     display = Catalogue.objects.get(id=pk)
     if not request.user.is_authenticated:
+        messages.info(request, 'To view full details please login first.')
         context = {
             "display": display,
         }
