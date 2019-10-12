@@ -16,6 +16,7 @@ def view_one(request, pk):
     Displays details of a specific item.
     Also handles bid functions.
     """
+    display = Catalogue.objects.get(id=pk)
     if not request.user.is_authenticated:
         context = {
             "display": display,
@@ -23,7 +24,6 @@ def view_one(request, pk):
         return render(request, 'display-one-closed.html', context)
 
     else:
-        display = Catalogue.objects.get(id=pk)
         open = Catalogue.objects.filter(start__lte=datetime.now()).filter(finish__gte=datetime.now())
         finish = Catalogue.objects.filter(finish__lte=datetime.now())
 
