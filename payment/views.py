@@ -19,7 +19,7 @@ def billing(request, id):
     if request.method == "POST":
         if billing_form.is_valid():
             billing_form.save()
-            return redirect('payment:payment', id=pk)
+            return redirect('payment:payment', id=id)
 
     return render(request, "billing-address.html", {"billing_form": billing_form})
 
