@@ -6,5 +6,5 @@ from .forms import Billing_Address_Form, Delivery_Address_Form
 app_name = 'payment'
 urlpatterns = [
     path('pay<id>', payment, name="payment"),
-    path('<id>', billing, name="billing"),
+    path('bill<id>', billing, name="billing"),
 ]
