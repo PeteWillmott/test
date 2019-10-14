@@ -54,6 +54,7 @@
 <div class="border  border-primary  enclose  mt-2">
   <form action="{% url 'payment:stripe' id=id %}" method="post" id="payment-form">
         <div>
+            {% csrf_token %}
             <label for="card-element" class="pt-2  ml-2">
             Credit or debit card
             </label>
