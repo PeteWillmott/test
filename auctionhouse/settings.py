@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'payment.apps.PaymentConfig',
     'crispy_forms',
     'storages',
+    'stripe',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -126,6 +127,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Stripe API keys
+
+STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE")
+STRIPE_SECRET = os.getenv("STRIPE_SECRET")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

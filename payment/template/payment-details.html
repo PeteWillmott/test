@@ -52,7 +52,7 @@
 </div>
 
 <div class="border  border-primary  enclose  mt-2">
-  <form action="/charge" method="post" id="payment-form">
+  <form action="{% url 'payment:stripe' id=id %}" method="post" id="payment-form">
         <div>
             <label for="card-element" class="pt-2  ml-2">
             Credit or debit card
@@ -68,7 +68,7 @@
   </form>
 </div>
 
-<a href="#">Back</a>
+<a href="{% url 'payment:billing' id=id %}">Back</a>
 
 <script>
 // Create a Stripe client.

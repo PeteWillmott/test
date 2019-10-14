@@ -3,22 +3,9 @@
 {% load static from staticfiles %}
 
 {% block page_title %}Gray and Sons{% endblock %}
-{% block page_heading %}Delivery Details{% endblock %}
+{% block page_heading %}Payment Successful{% endblock %}
 {% block content %}
 
-<div class="row">
-    <div class="col  unselected"><a class="unselected-link" href="{% url 'payment:customer-details' %}"><p class="text-center">Customer Details</p></a></div>
-    <div class="col  unselected"><a class="unselected-link" href="{% url 'payment:billing-details' %}"><p class="text-center">Billing Address</p></a></div>
-    <div class="col  unselected"><a class="unselected-link" href="{% url 'payment:payment-details' %}"><p class="text-center">Payment</p></a></div>
-</div>
-
-<form action="POST">
-    {% csrf_token %}
-    {{ customer_form | crispy }}
-    {{ delivery_form | crispy }}
-    <button type="submit" class="btn btn-primary">Next</button>
-</form>
-
-<a href="">Back</a>
+<p>Your payment has been made, your purchase will be dispatched as soon as possible. Thank you for your business we look forwards to seeing you at future auctions.</p>
 
 {% endblock %}

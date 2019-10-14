@@ -66,3 +66,21 @@ def payment(request, id):
     return render(request, "delivery-address.html", context)
 
 
+@login_required(login_url='/login/')
+def stripe(request, id):
+    item = Catalogue.objects.get(id=id)
+    if request.method == 'POST':
+        token = request.POST.get['stripeToken']
+        try:
+            charge = stripe.Charge.create(
+                amount=item.bid,
+                currency='gbp',
+                description=item.name,
+                source=token,
+            )
+                return render(request, "success.html")
+
+            except stripe.CardError as e:
+                message.info(request, "Your card has been declined.")
+
+    return redirect('payment:payment', id=id)
