@@ -13,12 +13,13 @@ def billing(request, id):
         instance =  Billing_Address.objects.get(user=request.user)
     except ObjectDoesNotExist:
         instance = None
-    # instance =  Billing_Address.objects.get(user=request.user)
     billing_form = Billing_Address_Form(form_data, instance=instance)
 
     if request.method == "POST":
         if billing_form.is_valid():
-            billing_form.save()
+            billing_address = billing_form.save(commit=False)
+            billing_address.user = request.user
+            billing_address.save()
             return redirect('payment:payment', id=id)
 
     return render(request, "billing-address.html", {"billing_form": billing_form})
