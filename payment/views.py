@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib import messages
 from .forms import Billing_Address_Form, Delivery_Address_Form,  Recipient_Form
 from .models import Delivery_Address, Billing_Address
 from catalogue.models import Catalogue
@@ -78,9 +79,10 @@ def stripe(request, id):
                 description=item.name,
                 source=token,
             )
-                return render(request, "success.html")
+            return render(request, "success.html")
 
-            except stripe.CardError as e:
-                message.info(request, "Your card has been declined.")
+        except:
+            messages.info(request, "Your card has been declined.")
+
 
     return redirect('payment:payment', id=id)
