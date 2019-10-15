@@ -79,10 +79,11 @@ def stripe(request, id):
                 description=item.name,
                 source=token,
             )
-            return render(request, "success.html")
 
         except:
-            messages.info(request, "Your card has been declined.")
+            messages.error(request, f"Your card was declined!")
 
+    if charge.paid:
+        return render(request, "success.html")
 
     return redirect('payment:payment', id=id)
