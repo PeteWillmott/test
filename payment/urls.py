@@ -7,4 +7,5 @@ app_name = 'payment'
 urlpatterns = [
     path('pay<id>', payment, name="payment"),
     path('bill<id>', billing, name="billing"),
+    path('success', stripe, name="paid")
 ]
